@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {{> head_links}}
 </head>
+
 <body>
-    <h1>klk</h1>
+    <div class="page-content">
+        {{> side_menu}}
+        <main class="main-content">
+            {{> head_section}}
+            <div class="main-section-content">
+                <div class="head-main-content">
+                    <figure>
+                        <img src="" alt="">
+                    </figure>
+                    <div class="text-content">
+                        <h2>Creacion de noticias</h2>
+                        <p>Este apartado es para crear los articulos del blog</p>
+                    </div>
+                </div>
+                <div class="body-main-content">
+                    <div class="inputs-content">
+                        <div class="input-form">
+                            <label for="">
+                                <span>Titulo</span>
+                                <input type="text" id="mainTitle">
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Imagen principal</span>
+                                <input type="text" id="principalImg">
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Categoria</span>
+                                <select name="" id="selectCategory">
+                                    <option value="0">Seleccione la categoria</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Autor</span>
+                                <input type="text" id="inputAuthor">
+                            </label>
+                        </div>
+                        <div class="image-container">
+                            <span>Selección de imagenes</span>
+                            <div class="multiples-images-content">
+                                <button>
+                                    <figure>
+                                        <img src="" alt="">
+                                    </figure>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-description-content">
+                        <span>Descripcion del articulo</span>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    {{> scripts}}
 </body>
+
 </html>
