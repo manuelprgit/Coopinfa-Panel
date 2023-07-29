@@ -23,7 +23,7 @@ $green-100: #006400;
 $background-layer: #0000007d; 
 $footer-backgroud: #222222;
 
-$cards-shadow: 8px 8px 20px 0px rgba(0, 0, 0, 0.12);
+$cards-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
 
 //#region Reset CSS 
 
@@ -119,7 +119,15 @@ table {
 
 //#endregion Reset CSS
 
+body{
+    display: flex;
+    justify-content: center;
+}
+
 .page-content{
+    display: flex;
+    max-width: 1300px;
+    box-shadow: $cards-shadow;
 
     .side-menu{
         width: 30%;
@@ -136,8 +144,10 @@ table {
         }
         .head-content-menu{
             .logo-content{
+                display: flex;
+                justify-content: center;
                 figure{
-                    width: 100%;
+                    width: 70%;
                     height: 150px;
                     img{
                         object-fit: contain;    
@@ -185,6 +195,126 @@ table {
     }
 
     .main-content{
-        
+        width: 60%;
+        .head-section{
+            height: 70px;
+        }
+        .main-section-content{
+            width: 100%;
+            .head-main-content{
+                height: 80px;
+                display: flex;
+                padding: 0 61px;
+                gap: 17px;
+                align-items: center;
+
+                figure{
+                    width: 36px;
+                    height: 36px;
+                    img{
+                        object-fit: contain;
+                    }
+                }
+
+                .text-content{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    h2{
+                        font-size: 3rem;
+                        font-weight: 600;
+                    }
+                    p{
+                        font-size: 1.8rem;
+                        color: $grey
+                    }
+                }
+            }
+            .body-main-content{
+                padding: 0 18px;
+                
+                .inputs-content{
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    .input-form{
+                        label{
+                            display: flex;
+                            flex-direction: column;
+                            padding: 20px;
+                            gap: 8px;
+                            span{
+                                font-size: 1.6rem;
+                                margin-left: 12px;
+                            }
+                            input,select{
+                                width: 120px;
+                                height: 40px;
+                                box-shadow: $cards-shadow;
+                                border-radius: 8px;
+                                border: none;
+                                width: 100%;
+                                font-size: 1.6rem;
+                                padding: 0 12px;
+                            }
+                        }
+                    }
+                }
+                .image-container{
+                    width: 100%; 
+                    padding: 20px;
+                    span{
+                        font-size: 1.6rem; 
+                        margin-bottom: 12px;
+                        display: block;
+                    }
+                    .multiples-images-content{
+                        display: flex;
+                        align-items: center;
+                        .images-content{
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 8px;
+                            width: 100%;
+                            justify-content: center;
+                            .images{
+                                figure{
+                                    width: 100px;
+                                    height: 100px;
+                                    border-radius: 6px;
+                                    overflow: hidden;
+                                    box-shadow: $cards-shadow;
+                                }
+                            }
+                        }
+                        button{
+                            width: 100px;
+                            height: 140px;
+                            border-radius: 12px;
+                            border: none;
+                            cursor: pointer;
+                            background-color: #5CAE5C;
+                            width: 80px;
+                            figure{                            
+                                width: 100%;
+                                height: 36px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                img{
+                                    object-fit: contain;
+                                }
+                            }
+                        }
+                        button:hover{
+                            background-color: #309d30;
+                        }
+                        button:active{
+                            background-color: #1e881e;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

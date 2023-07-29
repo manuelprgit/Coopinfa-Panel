@@ -89,6 +89,16 @@ a {
   text-decoration: none;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.page-content {
+  display: flex;
+  max-width: 1300px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+}
 .page-content .side-menu {
   width: 30%;
   height: 100vh;
@@ -102,8 +112,12 @@ a {
   border-radius: 50px;
   margin-bottom: 20px;
 }
+.page-content .side-menu .head-content-menu .logo-content {
+  display: flex;
+  justify-content: center;
+}
 .page-content .side-menu .head-content-menu .logo-content figure {
-  width: 100%;
+  width: 70%;
   height: 150px;
 }
 .page-content .side-menu .head-content-menu .logo-content figure img {
@@ -143,6 +157,122 @@ a {
 }
 .page-content .side-menu .main-content-menu .option:hover {
   background-color: #008000;
+}
+.page-content .main-content {
+  width: 60%;
+}
+.page-content .main-content .head-section {
+  height: 70px;
+}
+.page-content .main-content .main-section-content {
+  width: 100%;
+}
+.page-content .main-content .main-section-content .head-main-content {
+  height: 80px;
+  display: flex;
+  padding: 0 61px;
+  gap: 17px;
+  align-items: center;
+}
+.page-content .main-content .main-section-content .head-main-content figure {
+  width: 36px;
+  height: 36px;
+}
+.page-content .main-content .main-section-content .head-main-content figure img {
+  object-fit: contain;
+}
+.page-content .main-content .main-section-content .head-main-content .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-content .main-content .main-section-content .head-main-content .text-content h2 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.page-content .main-content .main-section-content .head-main-content .text-content p {
+  font-size: 1.8rem;
+  color: #677183;
+}
+.page-content .main-content .main-section-content .body-main-content {
+  padding: 0 18px;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 8px;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label span {
+  font-size: 1.6rem;
+  margin-left: 12px;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label input, .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label select {
+  width: 120px;
+  height: 40px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 0 12px;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container {
+  width: 100%;
+  padding: 20px;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container span {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content {
+  display: flex;
+  align-items: center;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content .images-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content .images-content .images figure {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content button {
+  width: 100px;
+  height: 140px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background-color: #5CAE5C;
+  width: 80px;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content button figure {
+  width: 100%;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content button figure img {
+  object-fit: contain;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content button:hover {
+  background-color: #309d30;
+}
+.page-content .main-content .main-section-content .body-main-content .image-container .multiples-images-content button:active {
+  background-color: #1e881e;
 }
 
 /*# sourceMappingURL=main.css.map */
