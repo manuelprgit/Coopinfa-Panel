@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev":"nodemon .",
-    "sass":"sass --watch ./public/sass/main.scss:./public/css/main.css"
+    "sass":"sass --watch ./public/sass/main.scss:./public/css/main.css",
+    "sass-cat":"sass --watch ./public/sass/category.scss:./public/css/category.css"
   },
   "nodemonConfig": {
     "ext": "js,json,hbs,html"

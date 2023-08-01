@@ -1,1 +1,1 @@
- 
+ window.BaseUrl = 'http://localhost:3000/';

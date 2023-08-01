@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{> head_links}}
+    <link rel="stylesheet" href="./css/category.css">
+</head>
+
+<body>
+    <div class="page-content">
+        {{> side_menu}}
+        <main class="main-content">
+            {{> head_section}}
+            <div class="main-section-content">
+                <div class="head-main-content">
+                    <figure>
+                        <img src="./src/icon/categoria-green.png" alt="logo">
+                    </figure>
+                    <div class="text-content">
+                        <h2>Creacion de categoria</h2>
+                        <p>Este apartado es para crear las categorias para el blog</p>
+                    </div>
+                </div>
+
+                <div class="body-main-content">
+
+                    <div class="inputs-content">
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Codigo de la categoria</span>
+                                <input type="text" id="categoryId" disabled value="0">
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Descripción</span>
+                                <input type="text" id="categoryDescription">
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="table-content">
+                        <h2>Tabla de categorias</h2>
+                        <div class="table" id="tableCategory">
+                            <div class="thead">
+                                <div class="tr">
+                                    <div class="td text-center">Número</div>
+                                    <div class="td">Detalle</div>
+                                    <div class="td text-center">Editar</div>
+                                </div>
+                            </div>
+                            <div class="tbody" id="tdobyCategory">
+                              
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        <section class="button-section">
+            <div class="button-container">
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box ">Limpiar</span>
+                    <button id="btnClearAll" title="Nuevo" class="btn-custom-primary">
+                        <i class="fa-solid fa-file fa-2x"></i>
+                    </button>
+                </div> 
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Guardar categoria</span>
+                    <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
+                        <i class="fa-regular fa-floppy-disk fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    {{> scripts}}
+    <script src="./js/category.js"></script>
+</body>
+
+</html>

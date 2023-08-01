@@ -24,17 +24,22 @@
                     </div>
                 </div>
                 <div class="body-main-content">
-                    <div class="inputs-content">
-                        <div class="input-form">
-                            <label for="">
-                                <span>Titulo</span>
-                                <input type="text" id="mainTitle">
+                    <div class="inputs-content ">
+
+                        <div class="input-form article-content">
+                            <span>Imagen principal</span>
+                            <label for="principalImg">
+                                <figure>
+                                    <img src="./src/img/add.png" alt=""  id="principalImgContent">
+                                </figure>
+                                <input type="file" accept="image/*" id="principalImg">
                             </label>
                         </div>
+
                         <div class="input-form">
                             <label for="">
-                                <span>Imagen principal</span>
-                                <input type="text" id="principalImg">
+                                <span>Titulo principal</span>
+                                <input type="text" id="mainTitle">
                             </label>
                         </div>
                         <div class="input-form">
@@ -56,40 +61,50 @@
                         <span>Selección de imagenes</span>
                         <div class="multiples-images-content">
 
-                            <div class="images-content">
-
-                                <div class="images">
-                                    <figure>
-                                        <img src="./src/img/4.jpg" alt="">
-                                    </figure>
-                                </div>
-                                 <div class="images">
-                                    <figure>
-                                        <img src="./src/img/4.jpg" alt="">
-                                    </figure>
-                                </div> 
+                            <div class="images-content" id="imagesContent">
 
                             </div>
 
-
-                            <button>
+                            <label class="multiple-button" for="imageSelector">
                                 <figure>
                                     <img src="./src/icon/plus.svg" alt="">
                                 </figure>
-                            </button>
-                            
+                            </label>
+                            <input type="file" accept="image/*" id="imageSelector" class="image-selector">
+
                         </div>
                     </div>
                     <div class="article-description-content">
                         <span>Descripcion del articulo</span>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="" id="articleDetail" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
         </main>
-        {{> button_content}}
+        <section class="button-section">
+            <div class="button-container">
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box ">Limpiar</span>
+                    <button id="btnClearAll" title="Nuevo" class="btn-custom-primary">
+                        <i class="fa-solid fa-file fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip ">
+                    <span class="tooltip-box">Buscar articulos creados</span>
+                    <button id="btnSearchArticles" class="btn-custom-info">
+                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Guardar articulo</span>
+                    <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
+                        <i class="fa-regular fa-floppy-disk fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
     </div>
-    {{> scripts}}
+    <script src="./js/articles.js"></script>
 </body>
 
 </html>

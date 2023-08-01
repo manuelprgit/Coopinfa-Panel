@@ -1,0 +1,54 @@
+
+$secondary-bkg-button: #b4b4b4;
+$danger-bkg-button: #cf2f29;
+$primary-bkg-button: #2993cf;
+$info-bkg-button: #7cc5ef;
+$success-bkg-button: #00853f;
+$warning-bkg-button: #b7b33a;
+
+$danger-bkg-button-active: #96110c;
+$primary-bkg-button-active: #0a6da7;
+$info-bkg-button-active: #206e9b;
+$secondary-bkg-button-active: #939393;
+$success-bkg-button-active: #00853f;
+$warning-bkg-button-active: #8e8a14;
+
+$btn-clr-button: white;
+
+
+$grey: #677183;
+$blue: #3FB6FF;
+$blue-soft: #D7F0FF;
+$red: #FF4858;
+$red-soft: #FFE0E3;
+$orange: #CE8501;
+$orange-soft: #FFDB9B;
+
+$green-15: #CCFF33;
+$green-25: #9EF01A;
+$green-50: #70E000;
+$green-75: #008000;
+$green-100: #006400;
+
+$main-bgr-button: #d7d7d7;
+$border-inputs: #bababa;
+
+$background-layer: #0000007d; 
+$footer-backgroud: #222222;
+
+$cards-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+
+.inputs-content{
+    grid-template-rows: none !important;
+}
+.table-content{
+    margin: 16px;
+    padding: 10px;
+    box-shadow: $cards-shadow;
+    border-radius: 12px;
+    h2{
+        font-size: 2.6rem;
+        margin-left: 34px;
+        font-weight: 600;
+    }
+}

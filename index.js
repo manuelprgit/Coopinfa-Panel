@@ -19,7 +19,7 @@ app.get('/articulos', (req, res) => {
 });
 
 app.get('/categorias', (req, res) => {
-    res.render('index');
+    res.render('categorias');
 });
 
 app.listen(port, () => {

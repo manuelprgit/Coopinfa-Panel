@@ -1,0 +1,17 @@
+.inputs-content {
+  grid-template-rows: none !important;
+}
+
+.table-content {
+  margin: 16px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}
+.table-content h2 {
+  font-size: 2.6rem;
+  margin-left: 34px;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=category.css.map */
