@@ -6,13 +6,19 @@ $black: #484848;
 
 $background-division: #F8F8F8;
 
+$primary-soft: #6cc5f8; 
+$primary: #2993cf;
+$secondary: #b4b4b4;
 
-$secondary-bkg-button: #b4b4b4;
-$danger-bkg-button: #cf2f29;
-$primary-bkg-button: #2993cf;
-$info-bkg-button: #7cc5ef;
-$success-bkg-button: #00853f;
-$warning-bkg-button: #b7b33a;
+$info: #3daae9;
+$danger: #b31914;
+$success: #2ea667;
+$warning: #a19d25;
+
+$info-soft: #94cff1;
+$danger-soft: #ffc0be;
+$success-soft: #d6ffe9;
+$warning-soft: #fffedd;
 
 $danger-bkg-button-active: #96110c;
 $primary-bkg-button-active: #0a6da7;
@@ -145,6 +151,7 @@ table {
 body{
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 .page-content{
@@ -652,3 +659,64 @@ body{
     font-size: 2.4rem;
     font-weight: 600;
 }
+
+
+.alert-banner{
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    box-shadow: $cards-shadow;
+    bottom: 50px;
+    right: -560px;
+    transition: 0.3s;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 100px 400px;
+    align-items: center;
+    z-index: 500; 
+    background-color: white;
+    .icon-content{
+        justify-self: center;
+        i{
+            font-size: 5rem;
+        }
+    }
+    .message-content{
+        p{
+            font-size: 1.8rem;
+        }
+    }
+    .close-banner{
+        position: absolute;
+        top: 8px;
+        right: 18px;
+        cursor: pointer;
+        i{
+            font-size: 2rem;
+        }
+    }
+}
+
+
+.alert-banner.show{
+    right: 50px;
+}
+
+.alert-banner.danger{
+    background-color: $danger-soft;
+    i,p{
+        color: $danger;
+    } 
+}
+.alert-banner.warning{
+    background-color: $warning-soft;
+    i,p{
+        color: $warning;
+    } 
+}
+.alert-banner.success{
+    background-color: $success-soft;
+    i,p{
+        color: $success;
+    } 
+} 

@@ -92,6 +92,7 @@ a {
 body {
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .page-content {
@@ -570,6 +571,65 @@ body {
 .strong {
   font-size: 2.4rem;
   font-weight: 600;
+}
+
+.alert-banner {
+  position: absolute;
+  width: 500px;
+  height: 150px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  bottom: 50px;
+  right: -560px;
+  transition: 0.3s;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 100px 400px;
+  align-items: center;
+  z-index: 500;
+  background-color: white;
+}
+.alert-banner .icon-content {
+  justify-self: center;
+}
+.alert-banner .icon-content i {
+  font-size: 5rem;
+}
+.alert-banner .message-content p {
+  font-size: 1.8rem;
+}
+.alert-banner .close-banner {
+  position: absolute;
+  top: 8px;
+  right: 18px;
+  cursor: pointer;
+}
+.alert-banner .close-banner i {
+  font-size: 2rem;
+}
+
+.alert-banner.show {
+  right: 50px;
+}
+
+.alert-banner.danger {
+  background-color: #ffc0be;
+}
+.alert-banner.danger i, .alert-banner.danger p {
+  color: #b31914;
+}
+
+.alert-banner.warning {
+  background-color: #fffedd;
+}
+.alert-banner.warning i, .alert-banner.warning p {
+  color: #a19d25;
+}
+
+.alert-banner.success {
+  background-color: #d6ffe9;
+}
+.alert-banner.success i, .alert-banner.success p {
+  color: #2ea667;
 }
 
 /*# sourceMappingURL=main.css.map */

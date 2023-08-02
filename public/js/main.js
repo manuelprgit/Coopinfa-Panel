@@ -28,3 +28,7 @@ function showAcceptRejectModal(headerText, text) {
 var hideRejectModal = () => {
     modalContainerBackground.classList.remove('show');
 }
+
+function showAlertBanner(type, message){
+  
+}
