@@ -50,10 +50,6 @@
         return div;
     }
 
-    let updateRow = (data) => {
-
-    }
-
     let updateCategorieList = async() => {
         getCategories = await fetch(URL)
         .then(res => {
@@ -70,6 +66,8 @@
     let clearInput = () => {
         categoryId.value = 0;
         categoryDescription.value = "";
+        catId = 0;
+        isEditing = false;
     }
 
     fillTableCategories = (categories) => { 
