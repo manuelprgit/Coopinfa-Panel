@@ -521,13 +521,13 @@ body {
   color: #7d7d7d;
   text-align: center;
 }
-.accept-reject-content .button-content {
+.accept-reject-content .accept-content-modal .button-content {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
 }
-.accept-reject-content .button-content button.accept-btn {
+.accept-reject-content .accept-content-modal .button-content button.accept-btn {
   width: 200px;
   height: 60px;
   border-radius: 17px;
@@ -538,14 +538,14 @@ body {
   font-size: 2rem;
   cursor: pointer;
 }
-.accept-reject-content .button-content button.accept-btn i,
-.accept-reject-content .button-content button.reject-btn i {
+.accept-reject-content .accept-content-modal .button-content button.accept-btn i,
+.accept-reject-content .accept-content-modal .button-content button.reject-btn i {
   font-size: 2rem;
 }
-.accept-reject-content .button-content button.accept-btn:active {
+.accept-reject-content .accept-content-modal .button-content button.accept-btn:active {
   background: #006831;
 }
-.accept-reject-content .button-content button.reject-btn {
+.accept-reject-content .accept-content-modal .button-content button.reject-btn {
   width: 140px;
   height: 60px;
   border-radius: 17px;
@@ -556,7 +556,7 @@ body {
   font-size: 2rem;
   cursor: pointer;
 }
-.accept-reject-content .button-content button.reject-btn:active {
+.accept-reject-content .accept-content-modal .button-content button.reject-btn:active {
   background-color: #828282;
 }
 

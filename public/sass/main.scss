@@ -603,47 +603,48 @@ body{
                     text-align: center;
                 }
         }
-    }
-    .button-content{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-
-            button.accept-btn{
-                width: 200px;
-                height: 60px;
-                border-radius: 17px;
-                border: none;
-                background: $text-primary-color;
-                color: white;
-                font-weight: 600;
-                font-size: 2rem;
-                cursor: pointer;
-            }
-            button.accept-btn,
-            button.reject-btn{
-                i{
+        .button-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+    
+                button.accept-btn{
+                    width: 200px;
+                    height: 60px;
+                    border-radius: 17px;
+                    border: none;
+                    background: $text-primary-color;
+                    color: white;
+                    font-weight: 600;
                     font-size: 2rem;
+                    cursor: pointer;
                 }
-            }
-            button.accept-btn:active{
-                background: #006831;
-            }
-            button.reject-btn{
-                width: 140px;
-                height: 60px;
-                border-radius: 17px;
-                border: none;
-                background-color: $disabled-color;
-                color: white;
-                font-weight: 600;
-                font-size: 2rem;
-                cursor: pointer;
-            }
-            button.reject-btn:active{
-                background-color: #828282;
-            }
+                
+                button.accept-btn,
+                button.reject-btn{
+                    i{
+                        font-size: 2rem;
+                    }
+                }
+                button.accept-btn:active{
+                    background: #006831;
+                }
+                button.reject-btn{
+                    width: 140px;
+                    height: 60px;
+                    border-radius: 17px;
+                    border: none;
+                    background-color: $disabled-color;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 2rem;
+                    cursor: pointer;
+                }
+                button.reject-btn:active{
+                    background-color: #828282;
+                }
+        }
     }
 }
 

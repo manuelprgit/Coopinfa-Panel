@@ -11,16 +11,22 @@
 
     let URL = `${BaseUrl}api/categories/`
 
-    let getCategories = await fetch(URL)
-        .then(res => {
-            if (res.status >= 400) {
-                console.error(`Error al hacer la petición, Error ${res.status}`);
-            }
-            return res.json();
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    let getCategories
+    try {
+        
+        getCategories = await fetch(URL)
+            .then(res => {
+                if (res.status >= 400) {
+                    throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                }
+                return res.json();
+            })
+            .catch(err => {
+                showAlertBanner('dager',err);
+            })
+    } catch (error) {
+        showAlertBanner('dager',error);
+    }
 
     let createRow = (data, key) => {
 
@@ -52,12 +58,12 @@
         getCategories = await fetch(URL)
         .then(res => {
             if (res.status >= 400) {
-                console.error(`Error al hacer la petición, Error ${res.status}`);
+                throw new Error(`Error al hacer la petición, Error ${res.status}`);
             }
             return res.json();
         })
         .catch(err => {
-            console.log(err)
+            showAlertBanner(danger,err);
         }) 
     }
 
@@ -66,13 +72,11 @@
         categoryDescription.value = "";
     }
 
-    fillTableCategories = (categories) => {
-        console.log(categories);
+    fillTableCategories = (categories) => { 
         let fragment = document.createDocumentFragment();
 
         for (let key in categories) {
-            let element = categories[key];
-            console.log(element);
+            let element = categories[key]; 
             let row = createRow(element, key);
 
             fragment.append(row);
@@ -105,8 +109,7 @@
                     'Content-Type': 'application/json'
                 }
             })
-            .then(res => {
-                console.log(res);
+            .then(res => { 
                 if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
                 return res.text();
             })
@@ -122,17 +125,18 @@
                 return res;
             })
             .catch(err => {
-                console.log(err);
+                throw new Error(`Error al hacer la petición, Error ${res.status}`);
             })
         } catch (error) {
-            console.error(error);
+            showAlertBanner('danger',error);
         }
     }
 
     btnSaveArticle.addEventListener('click', async e => {
 
         if (categoryDescription.value == '') {
-            console.error('Debe de introducir una descripcion');
+            showAlertBanner('warning','Debe de introducir una descripcion');
+            categoryDescription.focus();
             return;
         }
 
@@ -147,13 +151,17 @@
                 await requestUsingFetch('PUT', categoriesObj);
                 let row = tdobyCategory.querySelector(`[data-id="${catId}"] .description`); 
                 row.textContent = categoryDescription.value;
+                showAlertBanner('success',`El registro se ha modificado con de manera exitosa`)
+
     
             } else {
     
-                let dataReturn = await requestUsingFetch('POST', categoriesObj);
+                let dataReturn = await requestUsingFetch('POST', categoriesObj); 
                 let row = createRow(dataReturn,getCategories.length);
-                
+               
                 tdobyCategory.append(row);
+
+                showAlertBanner('success',`Se ha creado el documento No. ${dataReturn.categoryId}`)
             }
     
             clearInput();
