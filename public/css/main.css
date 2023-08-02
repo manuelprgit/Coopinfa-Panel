@@ -484,4 +484,92 @@ body {
   text-align: right !important;
 }
 
+.accept-reject-content {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+.accept-reject-content .accept-content-modal {
+  height: 0px;
+  width: 750px;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  transition: 0.4s;
+}
+.accept-reject-content .accept-content-modal .text-content {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.accept-reject-content .accept-content-modal .text-content h1 {
+  font-size: 4.4rem;
+  color: #7d7d7d;
+  margin-bottom: 15px;
+}
+.accept-reject-content .accept-content-modal .text-content p {
+  font-size: 2.4rem;
+  color: #7d7d7d;
+  text-align: center;
+}
+.accept-reject-content .button-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.accept-reject-content .button-content button.accept-btn {
+  width: 200px;
+  height: 60px;
+  border-radius: 17px;
+  border: none;
+  background: #00853f;
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.accept-reject-content .button-content button.accept-btn i,
+.accept-reject-content .button-content button.reject-btn i {
+  font-size: 2rem;
+}
+.accept-reject-content .button-content button.accept-btn:active {
+  background: #006831;
+}
+.accept-reject-content .button-content button.reject-btn {
+  width: 140px;
+  height: 60px;
+  border-radius: 17px;
+  border: none;
+  background-color: #979797;
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.accept-reject-content .button-content button.reject-btn:active {
+  background-color: #828282;
+}
+
+.accept-reject-content.show {
+  background-color: rgba(51, 51, 51, 0.3411764706);
+  z-index: 1000;
+}
+.accept-reject-content.show .accept-content-modal {
+  height: 250px;
+}
+
+.strong {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
 /*# sourceMappingURL=main.css.map */

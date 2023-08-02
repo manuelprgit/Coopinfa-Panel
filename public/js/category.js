@@ -136,24 +136,28 @@
             return;
         }
 
-        let categoriesObj = getDataForRequest();
+        let wasAccepted = await showAcceptRejectModal('Crear la categoria',`Se creara la categoria <span class="strong">${categoryDescription.value}</span>`);
 
-        if (isEditing) {
-
-            await requestUsingFetch('PUT', categoriesObj);
-            let row = tdobyCategory.querySelector(`[data-id="${catId}"] .description`);
-            console.log(row);
-            row.textContent = categoryDescription.value;
-
-        } else {
-
-            let dataReturn = await requestUsingFetch('POST', categoriesObj);
-            let row = createRow(dataReturn,getCategories.length);
+        if(wasAccepted){
             
-            tdobyCategory.append(row);
+            let categoriesObj = getDataForRequest();
+    
+            if (isEditing) {
+    
+                await requestUsingFetch('PUT', categoriesObj);
+                let row = tdobyCategory.querySelector(`[data-id="${catId}"] .description`); 
+                row.textContent = categoryDescription.value;
+    
+            } else {
+    
+                let dataReturn = await requestUsingFetch('POST', categoriesObj);
+                let row = createRow(dataReturn,getCategories.length);
+                
+                tdobyCategory.append(row);
+            }
+    
+            clearInput();
         }
-
-        clearInput();
 
     });
 
