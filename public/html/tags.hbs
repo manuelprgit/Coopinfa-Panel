@@ -18,11 +18,11 @@
             <div class="main-section-content">
                 <div class="head-main-content">
                     <figure>
-                        <img src="./src/icon/categoria-green.png" alt="logo">
+                        <img src="./src/icon/tags-green.png" alt="logo">
                     </figure>
                     <div class="text-content">
-                        <h2>Creación de categoria</h2>
-                        <p>Este apartado es para crear las categorias para el blog</p>
+                        <h2>Creación de tags</h2>
+                        <p>Este apartado es para crear los tags para el blog</p>
                     </div>
                 </div>
 
@@ -32,23 +32,23 @@
 
                         <div class="input-form">
                             <label for="">
-                                <span>Codigo de la categoria</span>
-                                <input type="text" id="categoryId" disabled value="0">
+                                <span>Codigo del tag</span>
+                                <input type="text" id="tagId" disabled value="0">
                             </label>
                         </div>
 
                         <div class="input-form">
                             <label for="">
                                 <span>Descripción</span>
-                                <input type="text" id="categoryDescription">
+                                <input type="text" id="tagDescription">
                             </label>
                         </div>
 
                     </div>
 
                     <div class="table-content">
-                        <h2>Tabla de categorias</h2>
-                        <div class="table" id="tableCategory">
+                        <h2>Tabla de tags</h2>
+                        <div class="table" id="tableTag">
                             <div class="thead">
                                 <div class="tr">
                                     <div class="td text-center">Número</div>
@@ -56,7 +56,7 @@
                                     <div class="td text-center">Editar</div>
                                 </div>
                             </div>
-                            <div class="tbody" id="tdobyCategory">
+                            <div class="tbody" id="tdobyTag">
 
 
                             </div>
@@ -75,7 +75,7 @@
                     </button>
                 </div>
                 <div class="button-grouper tooltip">
-                    <span class="tooltip-box">Guardar categoria</span>
+                    <span class="tooltip-box">Guardar tag</span>
                     <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
                         <i class="fa-regular fa-floppy-disk fa-2x"></i>
                     </button>
@@ -84,7 +84,7 @@
         </section>
     </div>
     {{> scripts}}
-    <script src="./js/category.js"></script>
+    <script src="./js/tags.js"></script>
 </body>
 
 </html>

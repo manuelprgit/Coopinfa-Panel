@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev":"nodemon .",
     "sass":"sass --watch ./public/sass/main.scss:./public/css/main.css",
-    "sass-cat":"sass --watch ./public/sass/category.scss:./public/css/category.css"
+    "sass-pro":"sass --watch ./public/sass/products.scss:./public/css/products.css",
+    "sass-cat":"sass --watch ./public/sass/category.scss:./public/css/category.css",
+    "sass-coun":"sass --watch ./public/sass/council-members.scss:./public/css/council-members.css"
   },
   "nodemonConfig": {
     "ext": "js,json,hbs,html"

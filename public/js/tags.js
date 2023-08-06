@@ -1,19 +1,19 @@
 (async () => {
     alert
-    let categoryId = document.getElementById('categoryId');
-    let categoryDescription = document.getElementById('categoryDescription');
-    let tdobyCategory = document.getElementById('tdobyCategory');
+    let tagId = document.getElementById('tagId');
+    let tagDescription = document.getElementById('tagDescription');
+    let tdobyTag = document.getElementById('tdobyTag');
     let btnSaveArticle = document.getElementById('btnSaveArticle');
 
     let isEditing = false;
-    let catId = 0;
+    let tgId = 0;
 
-    let URL = `${BaseUrl}api/categories/`
+    let URL = `${BaseUrl}api/tags/`
 
-    let getCategories
+    let getTags
     try {
         
-        getCategories = await fetch(URL)
+        getTags = await fetch(URL)
             .then(res => {
                 if (res.status >= 400) {
                     throw new Error(`Error al hacer la petición, Error ${res.status}`);
@@ -32,10 +32,10 @@
         let div = document.createElement('div');
         div.classList.add('tr');
         div.setAttribute('data-key', key);
-        div.setAttribute('data-id',data.categoryId)
+        div.setAttribute('data-id',data.tagId)
 
         let td = `
-            <div class="td text-center">${data.categoryId}</div>
+            <div class="td text-center">${data.tagId}</div>
             <div class="td description">${data.description}</div>
             <div class="td text-center">
                 <button class="btn-edit">
@@ -49,8 +49,8 @@
         return div;
     }
 
-    let updateCategorieList = async() => {
-        getCategories = await fetch(URL)
+    let updateTagsList = async() => {
+        getTags = await fetch(URL)
         .then(res => {
             if (res.status >= 400) {
                 throw new Error(`Error al hacer la petición, Error ${res.status}`);
@@ -63,35 +63,35 @@
     }
 
     let clearInput = () => {
-        categoryId.value = 0;
-        categoryDescription.value = "";
-        catId = 0;
+        tagId.value = 0;
+        tagDescription.value = "";
+        tgId = 0;
         isEditing = false;
     }
 
-    fillTableCategories = (categories) => { 
+    let fillTabletags = (tags) => { 
         let fragment = document.createDocumentFragment();
 
-        for (let key in categories) {
-            let element = categories[key]; 
+        for (let key in tags) {
+            let element = tags[key]; 
             let row = createRow(element, key);
 
             fragment.append(row);
         }
 
-        tdobyCategory.append(fragment);
+        tdobyTag.append(fragment);
 
     }
-    fillTableCategories(getCategories);
+    fillTabletags(getTags);
 
     let getDataForRequest = () => {
         if (isEditing) {
             return {
-                description: categoryDescription.value
+                description: tagDescription.value
             }
         } else {
             return {
-                description: categoryDescription.value
+                description: tagDescription.value
             }
         }
     }
@@ -99,7 +99,7 @@
     let requestUsingFetch = async (method, data) => {
         
         try {
-            return await fetch((method == 'PUT') ? URL + catId : URL, {
+            return await fetch((method == 'PUT') ? URL + tgId : URL, {
                 method: method,
                 body: JSON.stringify(data),
                 headers: {
@@ -107,6 +107,7 @@
                 }
             })
             .then(res => { 
+                console.log(res);
                 if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
                 return res.text();
             })
@@ -117,7 +118,7 @@
                     res = JSON.parse(res);
                 }
 
-                updateCategorieList();
+                updateTagsList();
 
                 return res;
             })
@@ -131,34 +132,34 @@
 
     btnSaveArticle.addEventListener('click', async e => {
 
-        if (categoryDescription.value == '') {
+        if (tagDescription.value == '') {
             showAlertBanner('warning','Debe de introducir una descripcion');
-            categoryDescription.focus();
+            tagDescription.focus();
             return;
         }
 
-        let wasAccepted = await showAcceptRejectModal('Crear la categoria',`Se creara la categoria <span class="strong">${categoryDescription.value}</span>`);
+        let wasAccepted = await showAcceptRejectModal('Crear tag',`Se creara el tag <span class="strong">${tagDescription.value}</span>`);
 
         if(wasAccepted){
             
-            let categoriesObj = getDataForRequest();
+            let tagObj = getDataForRequest();
     
             if (isEditing) {
     
-                await requestUsingFetch('PUT', categoriesObj);
-                let row = tdobyCategory.querySelector(`[data-id="${catId}"] .description`); 
-                row.textContent = categoryDescription.value;
+                await requestUsingFetch('PUT', tagObj);
+                let row = tdobyTag.querySelector(`[data-id="${tgId}"] .description`); 
+                row.textContent = tagDescription.value;
                 showAlertBanner('success',`El registro se ha modificado de manera exitosa`)
 
     
             } else {
     
-                let dataReturn = await requestUsingFetch('POST', categoriesObj); 
-                let row = createRow(dataReturn,getCategories.length);
+                let dataReturn = await requestUsingFetch('POST', tagObj); 
+                let row = createRow(dataReturn,getTags.length);
                
-                tdobyCategory.append(row);
+                tdobyTag.append(row);
 
-                showAlertBanner('success',`Se ha creado el documento No. ${dataReturn.categoryId}`)
+                showAlertBanner('success',`Se ha creado el documento No. ${dataReturn.tagId}`)
             }
     
             clearInput();
@@ -166,15 +167,15 @@
 
     });
 
-    tdobyCategory.addEventListener('click', e => {
+    tdobyTag.addEventListener('click', e => {
 
         let key = e.target.closest('[data-key]').getAttribute('data-key');
 
         if(e.target.closest('button.btn-edit')){
-            categoryId.value = getCategories[key].categoryId;
-            categoryDescription.value = getCategories[key].description;
-            catId = getCategories[key].categoryId;
-            categoryDescription.select()
+            tagId.value = getTags[key].tagId;
+            tagDescription.value = getTags[key].description;
+            tgId = getTags[key].tagId;
+            tagDescription.select()
             isEditing = true;
         }
 

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{> head_links}}
+    <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./css/council-members.css">
+</head>
+
+<body>
+    <div class="page-content">
+        {{> tools}}
+        {{> side_menu}}
+        <main class="main-content">
+            {{> head_section}}
+            <div class="main-section-content">
+                <div class="head-main-content"> 
+                    <i class="fa-regular fa-user"></i>
+                    <div class="text-content">
+                        <h2>Mantenimineto de Integrantes del consejo</h2>
+                        <p>Este apartado es para crear las categorias para el blog</p>
+                    </div>
+                </div>
+
+                <div class="body-main-content" id="context">
+
+                    <div class="inputs-content">
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Numero</span>
+                                <input type="text" id="idMember" value="0" disabled>
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Nombre</span>
+                                <input type="text" id="name" class="required">
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Apellido</span>
+                                <input type="text" id="lastname">
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Cedula</span>
+                                <input type="text" id="cedula">
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Correo electronico</span>
+                                <input type="text" id="email">
+                            </label>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="inputs-content">
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Tipo de Consejo</span>
+                                <select name="" id="selectConsejo" class="required">
+                                    <option value="0">Seleccione el consejo</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Posición</span>
+                                <input type="text" id="position" class="required">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        <section class="button-section">
+            <div class="button-container">
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box ">Limpiar</span>
+                    <button id="btnClearAll" title="Nuevo" class="btn-custom-primary">
+                        <i class="fa-solid fa-file fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Buscar Integrante</span>
+                    <button id="btnSearchMembers" title="Guardar" class="btn-custom-success">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Guardar categoria</span>
+                    <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
+                        <i class="fa-regular fa-floppy-disk fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-content" id="modalMembers">
+        <div class="modal council-member">
+            <div class="head-modal">
+                <h2>Integrantes del consejo</h2>
+            </div>
+            <div class="close-modal" id="closeModal">
+                <p>X</p>
+            </div>
+            <div class="body-modal">
+                <div class="table-content"> 
+                    <div class="table" id="tableCategory">
+                        <div class="thead">
+                            <div class="tr">
+                                <div class="td text-center">Código</div>
+                                <div class="td">Nombre</div>
+                                <div class="td">Apellido</div>
+                                <div class="td">Cédula</div>
+                                <div class="td">Posición</div>
+                            </div>
+                        </div>
+                        <div class="tbody" id="tdobyMembers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> scripts}}
+    <script src="./js/integrantes-consejo.js"></script>
+</body>
+
+</html>

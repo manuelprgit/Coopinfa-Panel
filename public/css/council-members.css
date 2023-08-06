@@ -1,0 +1,12 @@
+.council-member {
+  width: 60% !important;
+}
+.council-member .table .thead .tr {
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+.council-member .table .tbody .tr {
+  cursor: pointer;
+  grid-template-columns: repeat(5, 1fr) !important;
+}
+
+/*# sourceMappingURL=council-members.css.map */

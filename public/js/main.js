@@ -32,7 +32,7 @@ function showAcceptRejectModal(headerText, text) {
     })
 }
 
-var hideRejectModal = () => modalContainerBackground.classList.remove('show');
+let hideRejectModal = () => modalContainerBackground.classList.remove('show');
 
 function showAlertBanner(type, message) {
 
@@ -73,4 +73,33 @@ function showAlertBanner(type, message) {
 
 let hideAlertBanner = () => alertBanner.classList.remove('show');
 
-closeBanner.addEventListener('click',hideAlertBanner)
+let validateInput = (context) => {
+    
+    let isEmpty = false;
+
+    context.querySelectorAll('.required').forEach(input=>{
+        if(input.value == "" 
+        || input.value == 0){
+            input.classList.add('danger');
+            isEmpty = true;
+        }
+    })
+  
+    return isEmpty;
+}
+
+let removeDangerAlert = (input) => input.classList.remove('danger')
+
+let removeAllDangerAlert = (context) => {
+
+    context.querySelectorAll('.danger').forEach(input=>{
+        input.classList.remove('danger')
+    })
+  
+}
+
+let showModal = (modal) => modal.classList.add('show');
+
+let hideModal = (modal) => modal.classList.remove('show');
+
+closeBanner.addEventListener('click',hideAlertBanner);

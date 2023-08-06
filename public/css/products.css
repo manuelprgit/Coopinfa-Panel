@@ -1,0 +1,14 @@
+.page-content .main-content .main-section-content .body-main-content .inputs-content {
+  grid-template-rows: none;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content textarea {
+  height: 124px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 12px;
+}
+
+/*# sourceMappingURL=products.css.map */

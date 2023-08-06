@@ -22,6 +22,22 @@ app.get('/categorias', (req, res) => {
     res.render('categorias');
 });
 
+app.get('/productos', (req, res) => {
+    res.render('productos');
+});
+
+app.get('/tags', (req, res) => {
+    res.render('tags');
+});
+
+app.get('/consejo', (req, res) => {
+    res.render('consejo');
+});
+
+app.get('/integrantes-consejo', (req, res) => {
+    res.render('integrantes-consejo');
+});
+
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`)
 })

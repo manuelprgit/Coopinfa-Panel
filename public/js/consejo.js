@@ -1,19 +1,20 @@
 (async () => {
     alert
-    let categoryId = document.getElementById('categoryId');
-    let categoryDescription = document.getElementById('categoryDescription');
-    let tdobyCategory = document.getElementById('tdobyCategory');
+    let consejoId = document.getElementById('consejoId');
+    let consejoDescription = document.getElementById('consejoDescription');
+    let tdobyConsejo = document.getElementById('tdobyConsejo');
     let btnSaveArticle = document.getElementById('btnSaveArticle');
+    let counsilContext = document.getElementById('counsilContext');
 
     let isEditing = false;
-    let catId = 0;
+    let tgId = 0;
 
-    let URL = `${BaseUrl}api/categories/`
+    let URL = `${BaseUrl}api/councilType/`
 
-    let getCategories
+    let getCounsil;
     try {
         
-        getCategories = await fetch(URL)
+        getCounsil = await fetch(URL)
             .then(res => {
                 if (res.status >= 400) {
                     throw new Error(`Error al hacer la petición, Error ${res.status}`);
@@ -32,10 +33,10 @@
         let div = document.createElement('div');
         div.classList.add('tr');
         div.setAttribute('data-key', key);
-        div.setAttribute('data-id',data.categoryId)
+        div.setAttribute('data-id',data.councilTypeId)
 
         let td = `
-            <div class="td text-center">${data.categoryId}</div>
+            <div class="td text-center">${data.councilTypeId}</div>
             <div class="td description">${data.description}</div>
             <div class="td text-center">
                 <button class="btn-edit">
@@ -49,8 +50,8 @@
         return div;
     }
 
-    let updateCategorieList = async() => {
-        getCategories = await fetch(URL)
+    let updateCounsilList = async() => {
+        getCounsil = await fetch(URL)
         .then(res => {
             if (res.status >= 400) {
                 throw new Error(`Error al hacer la petición, Error ${res.status}`);
@@ -63,35 +64,35 @@
     }
 
     let clearInput = () => {
-        categoryId.value = 0;
-        categoryDescription.value = "";
-        catId = 0;
+        consejoId.value = 0;
+        consejoDescription.value = "";
+        tgId = 0;
         isEditing = false;
     }
 
-    fillTableCategories = (categories) => { 
+    let fillTableCounsil = (counsil) => { 
         let fragment = document.createDocumentFragment();
 
-        for (let key in categories) {
-            let element = categories[key]; 
+        for (let key in counsil) {
+            let element = counsil[key]; 
             let row = createRow(element, key);
 
             fragment.append(row);
         }
 
-        tdobyCategory.append(fragment);
+        tdobyConsejo.append(fragment);
 
     }
-    fillTableCategories(getCategories);
+    fillTableCounsil(getCounsil);
 
     let getDataForRequest = () => {
         if (isEditing) {
             return {
-                description: categoryDescription.value
+                description: consejoDescription.value
             }
         } else {
             return {
-                description: categoryDescription.value
+                description: consejoDescription.value
             }
         }
     }
@@ -99,7 +100,7 @@
     let requestUsingFetch = async (method, data) => {
         
         try {
-            return await fetch((method == 'PUT') ? URL + catId : URL, {
+            return await fetch((method == 'PUT') ? URL + tgId : URL, {
                 method: method,
                 body: JSON.stringify(data),
                 headers: {
@@ -107,6 +108,7 @@
                 }
             })
             .then(res => { 
+                console.log(res);
                 if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
                 return res.text();
             })
@@ -117,7 +119,7 @@
                     res = JSON.parse(res);
                 }
 
-                updateCategorieList();
+                updateCounsilList();
 
                 return res;
             })
@@ -130,35 +132,37 @@
     }
 
     btnSaveArticle.addEventListener('click', async e => {
+        
+        let isEmpty = await validateInput(counsilContext)
 
-        if (categoryDescription.value == '') {
+        if (isEmpty) {
             showAlertBanner('warning','Debe de introducir una descripcion');
-            categoryDescription.focus();
+            consejoDescription.focus();
             return;
         }
 
-        let wasAccepted = await showAcceptRejectModal('Crear la categoria',`Se creara la categoria <span class="strong">${categoryDescription.value}</span>`);
+        let wasAccepted = await showAcceptRejectModal('Crear tipo de consejo',`Se creara el tipo de consejo <span class="strong">${consejoDescription.value}</span>`);
 
         if(wasAccepted){
             
-            let categoriesObj = getDataForRequest();
+            let counsilObj = getDataForRequest();
     
             if (isEditing) {
     
-                await requestUsingFetch('PUT', categoriesObj);
-                let row = tdobyCategory.querySelector(`[data-id="${catId}"] .description`); 
-                row.textContent = categoryDescription.value;
+                await requestUsingFetch('PUT', counsilObj);
+                let row = tdobyConsejo.querySelector(`[data-id="${tgId}"] .description`); 
+                row.textContent = consejoDescription.value;
                 showAlertBanner('success',`El registro se ha modificado de manera exitosa`)
 
     
             } else {
     
-                let dataReturn = await requestUsingFetch('POST', categoriesObj); 
-                let row = createRow(dataReturn,getCategories.length);
+                let dataReturn = await requestUsingFetch('POST', counsilObj); 
+                let row = createRow(dataReturn,getCounsil.length);
                
-                tdobyCategory.append(row);
+                tdobyConsejo.append(row);
 
-                showAlertBanner('success',`Se ha creado el documento No. ${dataReturn.categoryId}`)
+                showAlertBanner('success',`Se ha creado el documento No. ${dataReturn.consejoId}`)
             }
     
             clearInput();
@@ -166,15 +170,15 @@
 
     });
 
-    tdobyCategory.addEventListener('click', e => {
+    tdobyConsejo.addEventListener('click', e => {
 
         let key = e.target.closest('[data-key]').getAttribute('data-key');
 
         if(e.target.closest('button.btn-edit')){
-            categoryId.value = getCategories[key].categoryId;
-            categoryDescription.value = getCategories[key].description;
-            catId = getCategories[key].categoryId;
-            categoryDescription.select()
+            consejoId.value = getCounsil[key].councilTypeId;
+            consejoDescription.value = getCounsil[key].description;
+            tgId = getCounsil[key].councilTypeId;
+            consejoDescription.select()
             isEditing = true;
         }
 

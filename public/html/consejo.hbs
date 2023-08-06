@@ -18,45 +18,45 @@
             <div class="main-section-content">
                 <div class="head-main-content">
                     <figure>
-                        <img src="./src/icon/categoria-green.png" alt="logo">
+                        <img src="./src/icon/group-green.svg" alt="logo">
                     </figure>
                     <div class="text-content">
-                        <h2>Creación de categoria</h2>
-                        <p>Este apartado es para crear las categorias para el blog</p>
+                        <h2>Creación de tipos de consejos</h2>
+                        <p>Este apartado es para crear los tipos de consejos</p>
                     </div>
                 </div>
 
-                <div class="body-main-content">
+                <div class="body-main-content" id="counsilContext">
 
                     <div class="inputs-content">
 
                         <div class="input-form">
                             <label for="">
-                                <span>Codigo de la categoria</span>
-                                <input type="text" id="categoryId" disabled value="0">
+                                <span>Código</span>
+                                <input type="text" id="consejoId" disabled value="0">
                             </label>
                         </div>
 
                         <div class="input-form">
                             <label for="">
                                 <span>Descripción</span>
-                                <input type="text" id="categoryDescription">
+                                <input type="text" id="consejoDescription" class="required">
                             </label>
                         </div>
 
                     </div>
 
                     <div class="table-content">
-                        <h2>Tabla de categorias</h2>
-                        <div class="table" id="tableCategory">
+                        <h2>Tabla de tipo de cosejos</h2>
+                        <div class="table" id="tableConsejo">
                             <div class="thead">
                                 <div class="tr">
-                                    <div class="td text-center">Número</div>
+                                    <div class="td text-center">Código</div>
                                     <div class="td">Detalle</div>
                                     <div class="td text-center">Editar</div>
                                 </div>
                             </div>
-                            <div class="tbody" id="tdobyCategory">
+                            <div class="tbody" id="tdobyConsejo">
 
 
                             </div>
@@ -75,7 +75,7 @@
                     </button>
                 </div>
                 <div class="button-grouper tooltip">
-                    <span class="tooltip-box">Guardar categoria</span>
+                    <span class="tooltip-box">Guardar tipo de consejo</span>
                     <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
                         <i class="fa-regular fa-floppy-disk fa-2x"></i>
                     </button>
@@ -84,7 +84,7 @@
         </section>
     </div>
     {{> scripts}}
-    <script src="./js/category.js"></script>
+    <script src="./js/consejo.js"></script>
 </body>
 
 </html>

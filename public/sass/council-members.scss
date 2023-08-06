@@ -1,0 +1,16 @@
+.council-member{
+    width: 60% !important; 
+    .table{
+        .thead{
+            .tr{
+                grid-template-columns: repeat(5,1fr) !important;
+            }
+        }
+        .tbody{
+            .tr{
+                cursor: pointer;
+                grid-template-columns: repeat(5,1fr) !important;
+            }
+        }
+    }
+}

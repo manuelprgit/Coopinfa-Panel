@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {{> head_links}}
+    <link rel="stylesheet" href="./css/products.css">
 </head>
 
 <body>
@@ -17,21 +18,21 @@
             <div class="main-section-content">
                 <div class="head-main-content">
                     <figure>
-                        <img src="./src/icon/news-gree.svg" alt="logo">
+                        <img src="./src/icon/product-green.svg" alt="logo">
                     </figure>
                     <div class="text-content">
-                        <h2>Creacion de noticias</h2>
-                        <p>Este apartado es para crear los articulos del blog</p>
+                        <h2>Creacion de productos de la cooperativa</h2>
+                        <p>Este apartado es para crear los distintos productos que ofrecemos como cooperativa</p>
                     </div>
                 </div>
-                <div class="body-main-content">
-                    <div class="inputs-content ">
+                <div class="body-main-content" id="inputContent">
+                    <div class="inputs-content">
 
                         <div class="input-form article-content">
-                            <span>Imagen principal</span>
+                            <span>Imagen del producto</span>
                             <label for="principalImg">
                                 <figure>
-                                    <img src="./src/img/add.png" alt=""  id="principalImgContent">
+                                    <img src="./src/img/add.png" alt="" id="principalImgContent">
                                 </figure>
                                 <input type="file" accept="image/*" id="principalImg">
                             </label>
@@ -39,45 +40,20 @@
 
                         <div class="input-form">
                             <label for="">
-                                <span>Titulo principal</span>
-                                <input type="text" id="mainTitle">
+                                <span>Nombre del producto</span>
+                                <input type="text" class="required" id="productName">
                             </label>
                         </div>
                         <div class="input-form">
                             <label for="">
-                                <span>Categoria</span>
-                                <select name="" id="selectCategory">
-                                    <option value="0">Seleccione la categoria</option>
-                                </select>
+                                <span>Titulo del producto</span>
+                                <textarea type="text" class="required" id="titleProduct"></textarea>
                             </label>
-                        </div>
-                        <div class="input-form">
-                            <label for="">
-                                <span>Autor</span>
-                                <input type="text" id="inputAuthor">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="image-container">
-                        <span>Selección de imagenes</span>
-                        <div class="multiples-images-content">
-
-                            <div class="images-content" id="imagesContent">
-
-                            </div>
-
-                            <label class="multiple-button" for="imageSelector">
-                                <figure>
-                                    <img src="./src/icon/plus.svg" alt="">
-                                </figure>
-                            </label>
-                            <input type="file" accept="image/*" id="imageSelector" class="image-selector" multiple>
-
-                        </div>
+                        </div> 
                     </div>
                     <div class="article-description-content">
                         <span>Descripcion del articulo</span>
-                        <textarea name="" id="articleDetail" cols="30" rows="10"></textarea>
+                        <textarea name="" class="required" id="productDetail" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -92,13 +68,13 @@
                 </div>
                 <div class="button-grouper tooltip ">
                     <span class="tooltip-box">Buscar articulos creados</span>
-                    <button id="btnSearchArticles" class="btn-custom-info">
+                    <button id="btnSearchProduct" class="btn-custom-info">
                         <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                     </button>
                 </div>
                 <div class="button-grouper tooltip">
                     <span class="tooltip-box">Guardar articulo</span>
-                    <button id="btnSaveArticle" title="Guardar" class="btn-custom-success">
+                    <button id="btnSaveProduct" title="Guardar" class="btn-custom-success">
                         <i class="fa-regular fa-floppy-disk fa-2x"></i>
                     </button>
                 </div>
@@ -106,7 +82,7 @@
         </section>
     </div>
     {{> scripts}}
-    <script src="./js/articles.js"></script>
+    <script src="./js/products.js"></script>
 </body>
 
 </html>
