@@ -215,7 +215,6 @@
             } else {
                 let newMember = await requestUsingFetch('POST', obj);
                 insertNewMemberInTable (newMember);
-                console.log(newMember);
                 try {
                     getCouncilsMembers = await fetch(URL)
                     .then(res=>{
@@ -230,6 +229,7 @@
                     showAlertBanner('danger', error)
                 } 
                 clearAllInputs();
+                showAlertBanner('success',`Se ha creado el miembro ${newMember.name}`)
             }
         }
 
