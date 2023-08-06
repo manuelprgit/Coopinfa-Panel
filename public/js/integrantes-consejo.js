@@ -164,7 +164,24 @@
         td[1].textContent = name.value;
         td[2].textContent = lastname.value;
         td[3].textContent = cedula.value;
-        td[4].textContent = position.value; 
+        td[4].textContent = position.value;
+
+    }
+
+    let insertNewMemberInTable = (newMember) => {
+
+        let tr = document.createElement('div');
+        tr.classList.add('tr');
+        tr.setAttribute('data-key', getCouncilsMembers.length);
+        let td = `
+            <div class="td text-center">${newMember.employeeId}</div>
+            <div class="td">${newMember.name}</div>
+            <div class="td">${newMember.lastName}</div>
+            <div class="td">${newMember.id}</div>
+            <div class="td">${newMember.position}</div>
+        `
+        tr.insertAdjacentHTML('afterbegin',td);
+        tdobyMembers.insertAdjacentElement('beforeend',tr);
 
     }
 
@@ -184,17 +201,36 @@
             showAlertBanner('warning', 'Faltan parametros')
             return;
         }
-
-        let obj = getDataForRequest();
-
-        if (isEditing) {
-            await requestUsingFetch('PUT', obj);
-            updateTableMembers();
-
-        } else {
-            let result = await requestUsingFetch('POST', obj);
-
-            console.log(result);
+        let wasAccepted = await showAcceptRejectModal('Mantenimiento de miembre','Desea realizar este proceso');
+        if(wasAccepted){
+            let obj = getDataForRequest();
+    
+            if (isEditing) {
+                
+                await requestUsingFetch('PUT', obj);
+                updateTableMembers();
+                clearAllInputs();
+                showAlertBanner('success','Se ha actuaalizado el miembro');
+    
+            } else {
+                let newMember = await requestUsingFetch('POST', obj);
+                insertNewMemberInTable (newMember);
+                console.log(newMember);
+                try {
+                    getCouncilsMembers = await fetch(URL)
+                    .then(res=>{
+                        if(res.status >= 400) throw new Error(`Error al traer integrantes del consejo, Error ${res.status}`);
+                        return res.json();
+                    }) 
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                    
+                } catch (error) {
+                    showAlertBanner('danger', error)
+                } 
+                clearAllInputs();
+            }
         }
 
 
