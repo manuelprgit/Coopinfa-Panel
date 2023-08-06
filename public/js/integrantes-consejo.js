@@ -14,6 +14,7 @@
     let btnClearAll = document.getElementById('btnClearAll');
     let btnSaveArticle = document.getElementById('btnSaveArticle');
 
+    let memberId;
     let isEditing = false;
 
     let URL = `${BaseUrl}api/employee/`;
@@ -174,7 +175,7 @@
         let obj = getDataForRequest();
 
         if (isEditing) {
-            let result = await requestUsingFetch('PUT', obj);
+            await requestUsingFetch('PUT', obj);
 
         } else {
             let result = await requestUsingFetch('POST', obj);
@@ -183,13 +184,14 @@
         }
 
 
-
     })
 
     tableCategory.addEventListener('click',e=>{
         if(e.target.closest('.tr')){
             let key = e.target.closest('.tr').getAttribute('data-key'); 
-            setInputValues(getCouncilsMembers[key]) 
+            setInputValues(getCouncilsMembers[key]);
+            memberId = getCouncilsMembers[key].employeeId;
+            isEditing = true;
         }
     })
 
