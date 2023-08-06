@@ -16,6 +16,7 @@
 
     let memberId;
     let isEditing = false;
+    let selectedRowKey;
 
     let URL = `${BaseUrl}api/employee/`;
 
@@ -155,6 +156,18 @@
         }
     }
 
+    let updateTableMembers = () => { 
+
+        let tr = tdobyMembers.querySelector(`[data-key="${selectedRowKey}"]`);
+
+        let td = tr.querySelectorAll('.td');
+        td[1].textContent = name.value;
+        td[2].textContent = lastname.value;
+        td[3].textContent = cedula.value;
+        td[4].textContent = position.value; 
+
+    }
+
     context.addEventListener('change', e => {
 
         if (e.target.classList.contains('danger')) {
@@ -176,6 +189,7 @@
 
         if (isEditing) {
             await requestUsingFetch('PUT', obj);
+            updateTableMembers();
 
         } else {
             let result = await requestUsingFetch('POST', obj);
@@ -188,9 +202,9 @@
 
     tableCategory.addEventListener('click',e=>{
         if(e.target.closest('.tr')){
-            let key = e.target.closest('.tr').getAttribute('data-key'); 
-            setInputValues(getCouncilsMembers[key]);
-            memberId = getCouncilsMembers[key].employeeId;
+            selectedRowKey = e.target.closest('.tr').getAttribute('data-key'); 
+            setInputValues(getCouncilsMembers[selectedRowKey]);
+            memberId = getCouncilsMembers[selectedRowKey].employeeId;
             isEditing = true;
         }
     })
