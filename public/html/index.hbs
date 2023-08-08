@@ -79,6 +79,18 @@
                         <span>Descripcion del articulo</span>
                         <textarea name="" id="articleDetail" cols="30" rows="10"></textarea>
                     </div>
+
+                    <div class="tags-content">
+                        <span>Seleccion de tags</span>
+                        <div class="select-tags-content">
+                            <select name="" id="selectTags">
+                                <option value="0">seleccione el tag</option>
+                            </select>
+                        </div>
+                        <div class="tags-container" id="tagsContainer">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -104,6 +116,31 @@
                 </div>
             </div>
         </section>
+    </div>
+     <div class="modal-content news-modal" id="modalNews">
+        <div class="modal news-modal">
+            <div class="head-modal">
+                <h2>Noticias creadas</h2>
+            </div>
+            <div class="close-modal" id="closeModal">
+                <p>X</p>
+            </div>
+            <div class="body-modal">
+                <div class="table-content"> 
+                    <div class="table" id="tableCategory">
+                        <div class="thead">
+                            <div class="tr">
+                                <div class="td text-center">Número</div>
+                                <div class="td">Titulo</div>
+                                <div class="td text-center">Fecha de creación</div>
+                            </div>
+                        </div>
+                        <div class="tbody" id="tdobyMembers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     {{> scripts}}
     <script src="./js/articles.js"></script>
