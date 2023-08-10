@@ -37,6 +37,12 @@
                                 <input type="file" accept="image/*" id="principalImg">
                             </label>
                         </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Codigo</span>
+                                <input type="text" value="0" id="productId" disabled>
+                            </label>
+                        </div>
 
                         <div class="input-form">
                             <label for="">
@@ -49,7 +55,7 @@
                                 <span>Titulo del producto</span>
                                 <textarea type="text" class="required" id="titleProduct"></textarea>
                             </label>
-                        </div> 
+                        </div>
                     </div>
                     <div class="article-description-content">
                         <span>Descripcion del articulo</span>
@@ -58,6 +64,7 @@
                 </div>
             </div>
         </main>
+
         <section class="button-section">
             <div class="button-container">
                 <div class="button-grouper tooltip">
@@ -80,6 +87,31 @@
                 </div>
             </div>
         </section>
+    </div>
+    <div class="modal-content products-modal" id="modalProduct">
+        <div class="modal product-modal">
+            <div class="head-modal">
+                <h2>Productos</h2>
+            </div>
+            <div class="close-modal" id="closeModal">
+                <p>X</p>
+            </div>
+            <div class="body-modal">
+                <div class="table-content">
+                    <div class="table" id="tableProduct">
+                        <div class="thead">
+                            <div class="tr">
+                                <div class="td text-center">Número</div>
+                                <div class="td">Nombre</div>
+                            </div>
+                        </div>
+                        <div class="tbody" id="tdobyProduct">
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     {{> scripts}}
     <script src="./js/products.js"></script>

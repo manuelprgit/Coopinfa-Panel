@@ -263,14 +263,6 @@
 
     }
 
-    let insetNewArticleOnTable = (article) => {
-      
-    }
-
-    let updateArticleOnTable = (article) => {
-      
-    }
-
     let removeFromTagList = (id,list) => delete list[id];
 
     let convertObjToList = (obj) => Object.entries(obj).map(item=> item[1]);

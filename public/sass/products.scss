@@ -4,6 +4,16 @@
 .body-main-content 
 .inputs-content{
     grid-template-rows: none;
+
+    .input-form.article-content{
+        label{
+            height: 85%;
+            figure{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
     textarea{
         height: 124px;
         box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
@@ -13,4 +23,22 @@
         font-size: 1.6rem;
         padding: 12px;
     }
+}
+
+.modal-content.products-modal{
+    .modal{
+        width: 60%;
+        .body-modal .table-content .table {
+            .thead .tr{
+                grid-template-columns: 1fr 3fr;
+            }
+            .tbody{
+                cursor: pointer;
+                .tr{
+                    grid-template-columns: 1fr 3fr;
+                }
+            }
+        }
+    }
+    
 }
