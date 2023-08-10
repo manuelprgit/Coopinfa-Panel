@@ -235,6 +235,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 338px;
 }
 .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form.article-content label figure {
   width: 360px;
