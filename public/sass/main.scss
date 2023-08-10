@@ -729,7 +729,7 @@ body{
 
 
 .alert-banner{
-    position: absolute;
+    position: fixed;
     width: 500px;
     height: 150px;
     box-shadow: $cards-shadow;
@@ -884,12 +884,12 @@ body{
                 .table{
                     .thead{
                         .tr{
-                            grid-template-columns: 1fr 4fr 1fr;
+                            grid-template-columns: 1fr 4fr 1fr 1fr;
                         }
                     }
                     .tbody{
                         .tr{
-                            grid-template-columns: 1fr 4fr 1fr;
+                            grid-template-columns: 1fr 4fr 1fr 1fr;
                             cursor: pointer;
                         }
                     }

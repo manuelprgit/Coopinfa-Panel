@@ -7,7 +7,7 @@ const port = 3010;
 app.set('view engine', 'hbs');
 app.set('views', './public/html')
 
-hbs.registerPartials(path.join(__dirname, '/public/html/partials'));
+hbs.registerPartials(path.join(__dirname, 'public','html','partials'));
 app.use(express.static(path.join(`${__dirname}/public`)));
 
 app.get('/', (req, res) => {

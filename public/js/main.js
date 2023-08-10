@@ -1,4 +1,4 @@
-window.BaseUrl = 'http://localhost:3000/';
+window.BaseUrl = 'http://10.0.0.5:3000/';
 
 let modalContainerBackground = document.getElementById('modalContainerBackground');
 let modalContent = document.getElementById('modalContent');
