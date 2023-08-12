@@ -68,7 +68,7 @@
     let fillTableNews = (news) => {
 
         let fragment = document.createDocumentFragment();
-
+        // news = news.sort((a,b)=>b.newsId-a.newsId)
         for (let key in news) {
 
             let thisNew = news[key];
