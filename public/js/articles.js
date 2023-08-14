@@ -1,5 +1,5 @@
 (async () => {
-
+    loaderControler.enable();
     let mainNumber = document.getElementById('mainNumber');
     let mainTitle = document.getElementById('mainTitle');
     let principalImg = document.getElementById('principalImg');
@@ -485,6 +485,7 @@
             removeFromTagList(elementTag.getAttribute('data-id'),categoriesObj);
         }
     });
+    loaderControler.disable ();
 
 })()
 

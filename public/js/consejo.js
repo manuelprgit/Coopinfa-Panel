@@ -1,5 +1,6 @@
 (async () => {
-    alert
+    loaderControler.enable();
+
     let consejoId = document.getElementById('consejoId');
     let consejoDescription = document.getElementById('consejoDescription');
     let tdobyConsejo = document.getElementById('tdobyConsejo');
@@ -185,5 +186,6 @@
     });
 
     btnClearAll.addEventListener('click',clearInput);
+    loaderControler.disable();
 
 })()

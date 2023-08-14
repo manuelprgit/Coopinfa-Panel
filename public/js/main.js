@@ -14,6 +14,15 @@ let closeBanner = document.getElementById('closeBanner');
 let iconContent = document.getElementById('iconContent');
 // alert banner variables
 
+let loaderControler = {
+    enable: () => {
+        loader.classList.add('show')
+    },
+    disable: () => {
+        loader.classList.remove('show')
+    }
+}
+
 function showAcceptRejectModal(headerText, text) {
     return new Promise((resolve, reject) => {
 

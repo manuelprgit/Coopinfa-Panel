@@ -676,6 +676,28 @@ body {
   font-size: 2rem;
 }
 
+.loader-content {
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.1882352941);
+  width: 70%;
+  height: 100%;
+  position: fixed;
+  display: grid;
+  place-content: center;
+  transition: 0.2s;
+  z-index: 3000;
+}
+.loader-content .loader {
+  width: 250px;
+  height: 250px;
+}
+
+.loader-content.show {
+  opacity: 1;
+  pointer-events: initial;
+}
+
 .alert-banner.show {
   right: 50px;
 }

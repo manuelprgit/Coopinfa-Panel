@@ -1,5 +1,6 @@
 (async () => {
-    alert
+    loaderControler.enable();
+
     let tagId = document.getElementById('tagId');
     let tagDescription = document.getElementById('tagDescription');
     let tdobyTag = document.getElementById('tdobyTag');
@@ -182,5 +183,6 @@
     });
 
     btnClearAll.addEventListener('click',clearInput);
+    loaderControler.disable();
 
 })()

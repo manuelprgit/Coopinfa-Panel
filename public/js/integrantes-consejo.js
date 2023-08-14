@@ -1,4 +1,5 @@
 (async () => {
+    loaderControler.enable();
     let idMember = document.getElementById('idMember');
     let name = document.getElementById('name');
     let lastname = document.getElementById('lastname');
@@ -254,5 +255,5 @@
     })
 
     btnClearAll.addEventListener('click',clearAllInputs);
-
+    loaderControler.disable();
 })()

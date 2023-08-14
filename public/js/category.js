@@ -1,5 +1,6 @@
 (async () => {
-    alert
+    loaderControler.enable();
+
     let categoryId = document.getElementById('categoryId');
     let categoryDescription = document.getElementById('categoryDescription');
     let tdobyCategory = document.getElementById('tdobyCategory');
@@ -181,5 +182,6 @@
     });
 
     btnClearAll.addEventListener('click',clearInput);
+    loaderControler.disable();
 
 })()

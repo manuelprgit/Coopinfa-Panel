@@ -1,5 +1,5 @@
 (async () => {
-
+    loaderControler.enable();
     let productId = document.getElementById('productId');
     let productName = document.getElementById('productName');
     let titleProduct = document.getElementById('titleProduct');
@@ -47,18 +47,18 @@
     }
 
     let getDataForRequest = () => {
-        return {
-            name: productName.value,
-            title: titleProduct.value,
-            description: productDetail.value
-        }
+        // return {
+        //     name: productName.value,
+        //     title: titleProduct.value,
+        //     description: productDetail.value
+        // }
         // TODO: //usar formdata para hacer el post
-        // let formData = new FormData();
-        // formData.append("image", principalImg.files[0]);
-        // formData.append("name", productName.value);
-        // formData.append("title",  titleProduct.value);
-        // formData.append("description", articleDetail.value);
-        // return formData;
+        let formData = new FormData();
+        formData.append("image", principalImg.files[0]);
+        formData.append("name", productName.value);
+        formData.append("title",  titleProduct.value);
+        formData.append("description", productDetail.value);
+        return formData;
 
     }
 
@@ -113,10 +113,10 @@
         try {
             return await fetch((method == 'PUT') ? `${URL}/${prodId}` : URL, {
                 method: method,
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                body: data,
+                // headers: {
+                //     'Content-Type': 'application/json'
+                // }
             })
                 .then(res => {
                     if (res.status >= 400) throw new Error(`Error al hacer ${method}, Error ${res.status}`);
@@ -151,13 +151,34 @@
 
     }
 
-    let fillAllInputs = (product) => {
-
+    let fillAllInputs = async (product) => {
+        
         productId.value = product.productId;
         productName.value = product.name;
         titleProduct.value = product.title;
         productDetail.value = product.description;
         prodId = product.productId;
+        
+        if(product.image){
+            try {
+                imagen = await fetch(`${BaseUrl}api/news/image/${product.image}`)
+                    .then(res => {
+                        if (res.status >= 400) {
+                            throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                        }
+                        return res;
+                    }).then(res=>{ 
+                        principalImgContent.src = res.url
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    }) 
+                
+            } catch (error) {
+                console.log(error);
+            } 
+
+        }
 
     }
 
@@ -173,34 +194,34 @@
         let wasAccepted = await showAcceptRejectModal('Guardar el registro', `Si acepta procedera a guardar el registro`)
 
         if (!wasAccepted) {
-            return;   
+            return;
         }
-        
-        
-        let data = getDataForRequest();
-        if(isEditing){
 
-            await requestUsingFetch('PUT',data);
+        let data = getDataForRequest();
+
+        if (isEditing) {
+
+            await requestUsingFetch('PUT', data);
             showAlertBanner('success', 'Se ha editado el producto');
             updateRow();
             clearAllInputs();
             removeAllDangerAlert(inputContent);
 
-        }else{
+        } else {
 
-            let productCreated = await requestUsingFetch('POST',data);
+            let productCreated = await requestUsingFetch('POST', data);
             console.log(productCreated);
-            tdobyProduct.append(insertRowOnTable(productCreated,getAllProducts.length));
+            tdobyProduct.append(insertRowOnTable(productCreated, getAllProducts.length));
             showAlertBanner('success', 'Se ha creado el producto');
             clearAllInputs();
             getAllProducts = await fetch(URL)
-            .then(res => {
-                if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
-                return res.json();
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .then(res => {
+                    if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                    return res.json();
+                })
+                .catch(err => {
+                    console.log(err)
+                })
             removeAllDangerAlert(inputContent);
 
         }
@@ -235,4 +256,6 @@
             hideModal(modalProduct)
         }
     })
+
+    loaderControler.disable();
 })()
