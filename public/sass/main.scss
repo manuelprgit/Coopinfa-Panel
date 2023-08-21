@@ -323,7 +323,7 @@ body{
                                 font-size: 1.6rem;
                                 margin-left: 12px;
                             }
-                            input,select{
+                            .icon,input,select,div{
                                 width: 120px;
                                 height: 40px;
                                 box-shadow: $cards-shadow;
@@ -332,6 +332,38 @@ body{
                                 width: 100%;
                                 font-size: 1.6rem;
                                 padding: 0 12px;
+                            }
+                            .icon{
+                                height: 80px;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                figure{
+                                    width: 66px;
+                                    height: 66px;
+                                    transition: 0.2s;
+                                    border-radius: 50px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    cursor: pointer;
+                                    &:hover{
+                                        background-color: #00000020;
+                                    }
+                                    &:active{
+                                        background-color: #00000040;
+                                    }
+                                    img{
+                                        width: 80%;
+                                        height: 80%;
+                                        object-fit: contain;
+                                    }
+                                }
+                                input{
+                                    display: none;
+                                }
                             }
                         }
                     }

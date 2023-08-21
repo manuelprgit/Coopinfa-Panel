@@ -7,6 +7,11 @@
     let principalImg = document.getElementById('principalImg');
     let principalImgContent = document.getElementById('principalImgContent');
 
+    let addIcon = document.getElementById('addIcon');
+    let textIcon = document.getElementById('textIcon');
+    let icon = document.getElementById('icon');
+    let selectIcon = document.getElementById('selectIcon');
+
     let closeModal = document.getElementById('closeModal');
     let btnClearAll = document.getElementById('btnClearAll');
     let btnSearchProduct = document.getElementById('btnSearchProduct');
@@ -22,16 +27,8 @@
 
     let URL = `${BaseUrl}api/products`;
 
-    principalImg.addEventListener("change", function (e) {
-        let imgRoot = e.target.files[0];
-        let fileR = new FileReader();
-        fileR.readAsDataURL(imgRoot);
 
-        fileR.addEventListener("load", function (e) {
-            principalImgContent.setAttribute("src", e.target.result);
-        });
-    });
-    let getAllProducts
+    let getAllProducts;
     try {
         getAllProducts = await fetch(URL)
             .then(res => {
@@ -39,25 +36,22 @@
                 return res.json();
             })
             .catch(err => {
-                console.log(err)
+                throw err;
             })
 
     } catch (error) {
-        showAlertBanner(error)
+        showAlertBanner('danger', error)
     }
 
     let getDataForRequest = () => {
-        // return {
-        //     name: productName.value,
-        //     title: titleProduct.value,
-        //     description: productDetail.value
-        // }
+        
         // TODO: //usar formdata para hacer el post
         let formData = new FormData();
         formData.append("image", principalImg.files[0]);
         formData.append("name", productName.value);
-        formData.append("title",  titleProduct.value);
+        formData.append("title", titleProduct.value);
         formData.append("description", productDetail.value);
+        formData.append("icon", selectIcon.files[0]);
         return formData;
 
     }
@@ -105,7 +99,7 @@
             fragment.append(row);
         }
         tdobyProduct.append(fragment);
-    }
+    };
     fillTableProducts(getAllProducts);
 
     let requestUsingFetch = async (method, data) => {
@@ -152,14 +146,14 @@
     }
 
     let fillAllInputs = async (product) => {
-        
+
         productId.value = product.productId;
         productName.value = product.name;
         titleProduct.value = product.title;
         productDetail.value = product.description;
         prodId = product.productId;
-        
-        if(product.image){
+
+        if (product.image) {
             try {
                 imagen = await fetch(`${BaseUrl}api/news/image/${product.image}`)
                     .then(res => {
@@ -167,16 +161,16 @@
                             throw new Error(`Error al hacer la petición, Error ${res.status}`);
                         }
                         return res;
-                    }).then(res=>{ 
+                    }).then(res => {
                         principalImgContent.src = res.url
                     })
                     .catch(err => {
                         console.log(err)
-                    }) 
-                
+                    })
+
             } catch (error) {
                 console.log(error);
-            } 
+            }
 
         }
 
@@ -230,6 +224,20 @@
 
 
     })
+
+    selectIcon.addEventListener("change", function (e) {
+        let imgRoot = e.target.files[0];
+        textIcon.textContent = (imgRoot.name.length > 20) 
+            ? imgRoot.name.substring(0,20)+'...'
+            : imgRoot.name;
+        let fileR = new FileReader();
+        fileR.readAsDataURL(imgRoot);
+        
+        fileR.addEventListener("load", function (e) {
+            console.log(e);
+            icon.setAttribute("src", e.target.result);
+        });
+    });
 
     inputContent.addEventListener('keydown', e => removeDangerAlert(e.target));
 

@@ -82,26 +82,34 @@
 
     let fillSelectCategories = (categories) => {
 
-        let fragment = document.createDocumentFragment();
-        for (let category of categories) {
-            let option = document.createElement('option');
-            option.innerText = category.description;
-            option.value = category.categoryId;
-            fragment.append(option);
+        if(categories instanceof Array){
+            let fragment = document.createDocumentFragment();
+            for (let category of categories) {
+                let option = document.createElement('option');
+                option.innerText = category.description;
+                option.value = category.categoryId;
+                fragment.append(option);
+            }
+            selectCategory.append(fragment)
         }
-        selectCategory.append(fragment)
+
     }
     fillSelectCategories(getCategories);
 
     let fillSelectTags = (tags) => {
-        let fragment = document.createDocumentFragment();
-        for (let tag of tags) {
-            let option = document.createElement('option');
-            option.innerText = tag.description;
-            option.value = tag.tagId;
-            fragment.append(option);
+
+        if(tags instanceof Array){
+
+            let fragment = document.createDocumentFragment();
+            for (let tag of tags) {
+                let option = document.createElement('option');
+                option.innerText = tag.description;
+                option.value = tag.tagId;
+                fragment.append(option);
+            }
+            selectTags.append(fragment)
         }
-        selectTags.append(fragment)
+
     }
     fillSelectTags(getAllTags);
 

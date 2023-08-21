@@ -257,7 +257,7 @@ body {
   font-size: 1.6rem;
   margin-left: 12px;
 }
-.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label input, .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label select {
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon, .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label input, .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label select, .page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label div {
   width: 120px;
   height: 40px;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
@@ -266,6 +266,37 @@ body {
   width: 100%;
   font-size: 1.6rem;
   padding: 0 12px;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon figure {
+  width: 66px;
+  height: 66px;
+  transition: 0.2s;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon figure:hover {
+  background-color: rgba(0, 0, 0, 0.1254901961);
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon figure:active {
+  background-color: rgba(0, 0, 0, 0.2509803922);
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon figure img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+.page-content .main-content .main-section-content .body-main-content .inputs-content .input-form label .icon input {
+  display: none;
 }
 .page-content .main-content .main-section-content .body-main-content .image-container {
   width: 100%;
