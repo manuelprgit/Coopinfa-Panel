@@ -44,7 +44,7 @@
     }
 
     let getDataForRequest = () => {
-        
+
         // TODO: //usar formdata para hacer el post
         let formData = new FormData();
         formData.append("image", principalImg.files[0]);
@@ -63,7 +63,8 @@
         titleProduct.value = "";
         productDetail.value = "";
         principalImgContent.src = './src/img/add.png';
-
+        icon.src = './src/img/add.png';
+        textIcon.textContent = 'Asignacion de iconos';
         removeAllDangerAlert(inputContent);
 
         isEditing = false;
@@ -107,13 +108,11 @@
         try {
             return await fetch((method == 'PUT') ? `${URL}/${prodId}` : URL, {
                 method: method,
-                body: data,
-                // headers: {
-                //     'Content-Type': 'application/json'
-                // }
+                body: data
             })
                 .then(res => {
                     if (res.status >= 400) throw new Error(`Error al hacer ${method}, Error ${res.status}`);
+                    loaderControler.disable();
                     return res.text();
                 })
                 .then(async res => {
@@ -131,7 +130,6 @@
             showAlertBanner('danger', error);
         }
     }
-
     let getProductById = async (productId) => {
 
         return await fetch(`${URL}/${productId}`)
@@ -145,6 +143,26 @@
 
     }
 
+    let setImagesOnContent = async (content, image) => {
+        try {
+            await fetch(`${BaseUrl}api/news/image/${image}`)
+                .then(res => {
+                    if (res.status >= 400) {
+                        throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                    }
+                    return res;
+                }).then(res => {
+                    content.src = res.url;
+                })
+                .catch(err => {
+                    throw err;
+                })
+
+        } catch (error) {
+            showAlertBanner('danger',error);
+        }
+    }
+
     let fillAllInputs = async (product) => {
 
         productId.value = product.productId;
@@ -153,26 +171,9 @@
         productDetail.value = product.description;
         prodId = product.productId;
 
-        if (product.image) {
-            try {
-                imagen = await fetch(`${BaseUrl}api/news/image/${product.image}`)
-                    .then(res => {
-                        if (res.status >= 400) {
-                            throw new Error(`Error al hacer la petición, Error ${res.status}`);
-                        }
-                        return res;
-                    }).then(res => {
-                        principalImgContent.src = res.url
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
+        if (product.image) await setImagesOnContent(principalImgContent, product.image);
 
-            } catch (error) {
-                console.log(error);
-            }
-
-        }
+        if (product.icon) await setImagesOnContent(icon, product.icon);
 
     }
 
@@ -190,7 +191,7 @@
         if (!wasAccepted) {
             return;
         }
-
+        loaderControler.enable();
         let data = getDataForRequest();
 
         if (isEditing) {
@@ -211,6 +212,7 @@
             getAllProducts = await fetch(URL)
                 .then(res => {
                     if (res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                    loaderControler.disable();
                     return res.json();
                 })
                 .catch(err => {
@@ -219,20 +221,19 @@
             removeAllDangerAlert(inputContent);
 
         }
-
+        loaderControler.disable();
         isEditing = false;
-
 
     })
 
     selectIcon.addEventListener("change", function (e) {
         let imgRoot = e.target.files[0];
-        textIcon.textContent = (imgRoot.name.length > 20) 
-            ? imgRoot.name.substring(0,20)+'...'
+        textIcon.textContent = (imgRoot.name.length > 20)
+            ? imgRoot.name.substring(0, 20) + '...'
             : imgRoot.name;
         let fileR = new FileReader();
         fileR.readAsDataURL(imgRoot);
-        
+
         fileR.addEventListener("load", function (e) {
             console.log(e);
             icon.setAttribute("src", e.target.result);
@@ -255,13 +256,15 @@
 
         if (e.target.closest('[data-key]')) {
 
+            loaderControler.enable();
+            hideModal(modalProduct);
             clearAllInputs();
-
             let key = e.target.closest('[data-key]').getAttribute('data-key');
-            let productById = await getProductById(getAllProducts[key].productId);
-            fillAllInputs(productById);
+            let productById = await getProductById(getAllProducts[key].productId);            
+            await fillAllInputs(productById);
             isEditing = true;
-            hideModal(modalProduct)
+            loaderControler.disable();
+
         }
     })
 

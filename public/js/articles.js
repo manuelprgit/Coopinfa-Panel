@@ -20,8 +20,8 @@
     let categoriesContainer = document.getElementById('categoriesContainer');
     let context = document.getElementById('context');
 
-    let URL = `${BaseUrl}api/news/`
-    let URLCategory = `${BaseUrl}api/categories/`
+    let URL = `${BaseUrl}api/news/`;
+    let URLCategory = `${BaseUrl}api/categories/`;
     let URLTags = `${BaseUrl}api/tags/`;
 
     let idNew = 0;
@@ -374,7 +374,7 @@
 
             await fetch(`${URL}${idNew}`, {
                 method: 'PUT',
-                body: dataRequest,
+                body: dataRequest
             })
                 .then(async res => {
                     console.log(await res.text());
