@@ -38,6 +38,10 @@ app.get('/integrantes-consejo', (req, res) => {
     res.render('integrantes-consejo');
 });
 
+app.get('/panel-promocion', (req, res) => {
+    res.render('panel-promocion');
+});
+
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`)
 })

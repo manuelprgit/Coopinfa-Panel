@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{> head_links}}
+    <link rel="stylesheet" href="./css/products.css">
+</head>
+
+<body>
+    <div class="page-content">
+        {{> tools}}
+        {{> side_menu}}
+        <main class="main-content">
+            {{> loader}}
+            {{> head_section}}
+            <div class="main-section-content">
+                <div class="head-main-content">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <div class="text-content">
+                        <h2>Panel de Promociones</h2>
+                        <p>En este apartado podemos crear las imágenes que pasan por el slide de la página principal</p>
+                    </div>
+                </div>
+                <div class="body-main-content promotions-content" id="inputContent">
+                    <div class="promotions-container">
+
+                        <div class="promo-img">
+                            <div class="check-content">
+                                <input type="checkbox">
+                            </div>
+                            <figure>
+                                <img src="./src/img/4.jpg" alt="">
+                            </figure>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section class="button-section">
+            <div class="button-container">
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box ">Limpiar</span>
+                    <button id="btnClearAll" title="Nuevo" class="btn-custom-primary">
+                        <i class="fa-solid fa-file fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip ">
+                    <span class="tooltip-box">Buscar articulos creados</span>
+                    <button id="btnSearchProduct" class="btn-custom-info">
+                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Guardar articulo</span>
+                    <button id="btnSaveProduct" title="Guardar" class="btn-custom-success">
+                        <i class="fa-regular fa-floppy-disk fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-content products-modal" id="modalProduct">
+        <div class="modal product-modal">
+            <div class="head-modal">
+                <h2>Productos</h2>
+            </div>
+            <div class="close-modal" id="closeModal">
+                <p>X</p>
+            </div>
+            <div class="body-modal">
+                <div class="table-content">
+                    <div class="table" id="tableProduct">
+                        <div class="thead">
+                            <div class="tr">
+                                <div class="td text-center">Número</div>
+                                <div class="td">Nombre</div>
+                            </div>
+                        </div>
+                        <div class="tbody" id="tdobyProduct">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> scripts}}
+    <script src="./js/promotions.js"></script>
+</body>
+
+</html>
