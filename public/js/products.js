@@ -27,7 +27,6 @@
 
     let URL = `${BaseUrl}api/products`;
 
-
     let getAllProducts;
     try {
         getAllProducts = await fetch(URL)
@@ -44,8 +43,7 @@
     }
 
     let getDataForRequest = () => {
-
-        // TODO: //usar formdata para hacer el post
+ 
         let formData = new FormData();
         formData.append("image", principalImg.files[0]);
         formData.append("name", productName.value);
@@ -130,6 +128,7 @@
             showAlertBanner('danger', error);
         }
     }
+
     let getProductById = async (productId) => {
 
         return await fetch(`${URL}/${productId}`)
@@ -176,6 +175,16 @@
         if (product.icon) await setImagesOnContent(icon, product.icon);
 
     }
+
+    principalImg.addEventListener("change", function (e) {
+        let imgRoot = e.target.files[0];
+        let fileR = new FileReader();
+        fileR.readAsDataURL(imgRoot);
+
+        fileR.addEventListener("load", function (e) {
+            principalImgContent.setAttribute("src", e.target.result);
+        });
+    });
 
     btnSaveProduct.addEventListener('click', async e => {
 
