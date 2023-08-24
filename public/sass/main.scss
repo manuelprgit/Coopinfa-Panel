@@ -957,3 +957,51 @@ body{
     opacity:1;
     pointer-events: initial;
 }
+
+//#region Seccion del panel de promociones
+
+.promotions-content{
+
+    .promotions-container{
+        box-shadow: $cards-shadow;
+        border-radius: 12px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        padding: 20px;
+
+        .promo-img{
+            cursor: pointer;
+            box-shadow: $cards-shadow;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            &.active{
+                background-color: #0000ff24;
+            }
+            .check-content{
+                width: 90%;
+                margin-bottom: 10px;
+                display: flex;
+                justify-content: end;
+                input{
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                    border-radius: 50px;
+                }
+            }
+            figure{
+                width: 90%;
+                height: 90%;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+//#endregion fin del panel de promociones

@@ -851,4 +851,44 @@ body {
   pointer-events: initial;
 }
 
+.promotions-content .promotions-container {
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+}
+.promotions-content .promotions-container .promo-img {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.promotions-content .promotions-container .promo-img.active {
+  background-color: rgba(0, 0, 255, 0.1411764706);
+}
+.promotions-content .promotions-container .promo-img .check-content {
+  width: 90%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: end;
+}
+.promotions-content .promotions-container .promo-img .check-content input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+.promotions-content .promotions-container .promo-img figure {
+  width: 90%;
+  height: 90%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 /*# sourceMappingURL=main.css.map */
