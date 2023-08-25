@@ -51,10 +51,10 @@
         showAlertBanner('danger',error)
     }
 
-    let createRowOnTable = (dataRow,key) => {
+    let createRowOnTable = (dataRow,idNews) => {
         let tr = document.createElement('div');
         tr.classList.add('tr');
-        tr.setAttribute('data-key', key);
+        tr.setAttribute('data-idNews', idNews);
         td = ` 
             <div class="td text-center">${dataRow.newsId}</div>
             <div class="td">${dataRow.title}</div>
@@ -70,9 +70,9 @@
         let fragment = document.createDocumentFragment();
         // news = news.sort((a,b)=>b.newsId-a.newsId)
         for (let key in news) {
-
+            console.log(news);
             let thisNew = news[key];
-            let row = createRowOnTable(thisNew,key)
+            let row = createRowOnTable(thisNew,news[key].newsId)
             fragment.append(row);
         }
         tdobyMembers.append(fragment);
@@ -355,13 +355,6 @@
     });
 
     btnSaveArticle.addEventListener('click', async e => {
-        
-        //TODO: Evaluar inpus requeridos
-        // let hasEmptyValue = validateInput(context);
-
-        // if(hasEmptyValue){
-        //     return;
-        // }
 
         let result = await showAcceptRejectModal('Desea guardar?', 'Se guardara los cambios que desea realizar');
         if (!result) {
@@ -378,10 +371,8 @@
             })
                 .then(async res => {
                     console.log(await res.text());
-                    if (res.status >= 400) {
-                        return res.text().message;
-                    };
-                    return res.text();
+                    if (res.status >= 400) throw Error('Error al actualizar');
+                    return res;
                 })
                 .then(res => {
                     console.log(res);
@@ -409,8 +400,8 @@
                 })
                 .then(async res => {
                     showAlertBanner('success', 'Se ha creado el articulo');             
-                    let newRow = createRowOnTable(res,getAllNews.length);
-                    tdobyMembers.append(newRow);
+                    let newRow = createRowOnTable(res,res.newsId);
+                    tdobyMembers.insertAdjacentElement('afterbegin',newRow);
 
                     getAllNews = await fetch(URL).then(res=>res.json());
                     clearAllInputs();
@@ -426,13 +417,13 @@
     tableCategory.addEventListener('click', async e => {
 
         
-        if (e.target.closest('[data-key]')) {
+        if (e.target.closest('[data-idNews]')) {
 
             clearAllInputs();
 
-            let key = e.target.closest('[data-key]').getAttribute('data-key');
+            let idNews = e.target.closest('[data-idNews]').getAttribute('data-idNews');
 
-            let newsById = await getNewById(getAllNews[key].newsId);
+            let newsById = await getNewById(idNews);
             console.log(newsById); 
 
             let image = await getImgNews(newsById.image); 

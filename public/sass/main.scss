@@ -500,6 +500,35 @@ body{
     }
 }
 
+.promotions-container{
+
+    .multiple-images{
+        display: none;
+    }
+
+    
+}
+
+.label-btn{
+    width: 100%;
+    display: flex;
+    background-color: $main-bgr-button;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px $border-inputs;
+    border-radius: 40px;
+    transition: 0.1s;
+    min-width: 70px;
+    height: 70px;
+    overflow: hidden;
+    box-shadow: 0px 5px 5px rgb(0 0 0 / 10%);
+    i{
+        transition: 0.1s;
+        font-size: 30px !important;
+    }
+}
+
 .tags-content{
     padding: 20px;
 
@@ -995,8 +1024,8 @@ body{
                 }
             }
             figure{
-                width: 90%;
-                height: 90%;
+                width: 182px;
+                height: 122px;
                 border-radius: 8px;
                 overflow: hidden;
             }

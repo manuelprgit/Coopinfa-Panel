@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    {{> head_links}} 
+    {{> head_links}}
 </head>
 
 <body>
@@ -24,77 +24,12 @@
                     </div>
                 </div>
                 <div class="body-main-content promotions-content" id="inputContent">
-                    
-                    <div class="promotions-container">
 
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
+                    <div class="promotions-container" id="promotionsContent">
 
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="promo-img">
-                            <div class="check-content">
-                                <input type="checkbox">
-                            </div>
-                            <figure>
-                                <img src="./src/img/4.jpg" alt="">
-                            </figure>
-                        </div>
-
+                        <input class="multiple-images" type="file" id="multipleImages" multiple/>
 
                     </div>
-
-
-                    
                 </div>
             </div>
         </main>
@@ -108,10 +43,10 @@
                     </button>
                 </div>
                 <div class="button-grouper tooltip ">
-                    <span class="tooltip-box">Buscar articulos creados</span>
-                    <button id="btnSearchProduct" class="btn-custom-info">
-                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-                    </button>
+                    <span class="tooltip-box">Agregar imagenes</span>
+                    <label for="multipleImages" id="btnAddImages" class="btn-custom-info label-btn">
+                        <i class="fa-solid fa-plus fa-2x"></i>
+                    </label>
                 </div>
                 <div class="button-grouper tooltip">
                     <span class="tooltip-box">Guardar articulo</span>

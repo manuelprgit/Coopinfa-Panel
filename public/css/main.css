@@ -425,6 +425,30 @@ body {
   font-size: 30px;
 }
 
+.promotions-container .multiple-images {
+  display: none;
+}
+
+.label-btn {
+  width: 100%;
+  display: flex;
+  background-color: #d7d7d7;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #bababa;
+  border-radius: 40px;
+  transition: 0.1s;
+  min-width: 70px;
+  height: 70px;
+  overflow: hidden;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.label-btn i {
+  transition: 0.1s;
+  font-size: 30px !important;
+}
+
 .tags-content {
   padding: 20px;
 }
@@ -885,8 +909,8 @@ body {
   border-radius: 50px;
 }
 .promotions-content .promotions-container .promo-img figure {
-  width: 90%;
-  height: 90%;
+  width: 182px;
+  height: 122px;
   border-radius: 8px;
   overflow: hidden;
 }
