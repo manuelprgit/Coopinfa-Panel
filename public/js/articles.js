@@ -169,10 +169,8 @@
         return true;
     } 
 
-    let getDataForRequest = () => {
-
-        // if(!imageName) imageName = principalImg.files[0].name;
-
+    let getDataForRequest = () => { 
+        
         let numberRandom = Math.floor(Math.random() * (200 - 1 + 1)) + 1
 
         let formData = new FormData();
@@ -292,7 +290,6 @@
     imageSelector.addEventListener("change", function (e) {
 
         const selectedImages = e.target.files;
-
         imageArray = Array.from(selectedImages);
 
         for (const imgRoot of selectedImages) {
@@ -361,8 +358,7 @@
             return;
         }
         let dataRequest = getDataForRequest();
-        console.log(dataRequest);
-
+        
         if (idNew > 0) {
 
             await fetch(`${URL}${idNew}`, {
@@ -484,8 +480,6 @@
             removeFromTagList(elementTag.getAttribute('data-id'),categoriesObj);
         }
     });
-    loaderControler.disable ();
 
+    loaderControler.disable();
 })()
-
-

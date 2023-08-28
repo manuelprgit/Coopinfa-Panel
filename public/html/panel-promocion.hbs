@@ -27,7 +27,7 @@
 
                     <div class="promotions-container" id="promotionsContent">
 
-                        <input class="multiple-images" type="file" id="multipleImages" multiple/>
+                        <input class="multiple-images" accept="image/*" type="file" id="multipleImages" multiple/>
 
                     </div>
                 </div>
@@ -49,8 +49,8 @@
                     </label>
                 </div>
                 <div class="button-grouper tooltip">
-                    <span class="tooltip-box">Guardar articulo</span>
-                    <button id="btnSaveProduct" title="Guardar" class="btn-custom-success">
+                    <span class="tooltip-box">Guardar promoción</span>
+                    <button id="btnSavePromotion" title="Guardar" class="btn-custom-success">
                         <i class="fa-regular fa-floppy-disk fa-2x"></i>
                     </button>
                 </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
     {{> scripts}}
-    <script src="./js/promotions.js"></script>
+    <script src="./js/promotions.js" type="module"></script>
 </body>
 
 </html>
