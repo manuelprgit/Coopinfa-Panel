@@ -9,8 +9,8 @@
 </head>
 
 <body>
+    {{> tools}}
     <div class="page-content">
-        {{> tools}}
         {{> side_menu}}
         <main class="main-content">
             {{> loader}}
@@ -26,13 +26,13 @@
                     </div>
                 </div>
                 <div class="body-main-content" id="context">
-                    <div class="inputs-content" >
+                    <div class="inputs-content">
 
                         <div class="input-form article-content">
                             <span>Imagen principal</span>
                             <label for="principalImg">
                                 <figure>
-                                    <img src="./src/img/add.png" alt=""  id="principalImgContent">
+                                    <img src="./src/img/add.png" alt="" id="principalImgContent">
                                 </figure>
                                 <input type="file" accept="image/*" id="principalImg">
                             </label>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
 
-                     <div class="tags-content">
+                    <div class="tags-content">
                         <span>Seleccion de Categorias</span>
                         <div class="select-tags-content">
                             <select name="" id="selectCategory">
@@ -131,7 +131,7 @@
             </div>
         </section>
     </div>
-     <div class="modal-content news-modal" id="modalNews">
+    <div class="modal-content news-modal" id="modalNews">
         <div class="modal news-modal">
             <div class="head-modal">
                 <h2>Noticias creadas</h2>
@@ -140,7 +140,7 @@
                 <p>X</p>
             </div>
             <div class="body-modal">
-                <div class="table-content"> 
+                <div class="table-content">
                     <div class="table" id="tableCategory">
                         <div class="thead">
                             <div class="tr">

@@ -627,6 +627,7 @@ body {
 }
 .accept-reject-content .accept-content-modal .text-content {
   width: 100%;
+  padding: 20px;
   height: 170px;
   display: flex;
   flex-direction: column;
@@ -879,7 +880,7 @@ body {
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding: 20px;
 }
 .promotions-content .promotions-container .promo-img {
@@ -909,7 +910,7 @@ body {
   border-radius: 50px;
 }
 .promotions-content .promotions-container .promo-img figure {
-  width: 182px;
+  width: 312px;
   height: 122px;
   border-radius: 8px;
   overflow: hidden;

@@ -88,28 +88,24 @@
     }
 
     let requestUsingFetch = async (method, data) => {
-
+        loaderControler.enable();
         try {
-            await fetch(BASEURL, {
+            return await fetch(BASEURL, {
                 method: method,
                 body: data
             })
                 .then(res => {
-                    if (res.status >= 400) {
-                        throw new Error(`Error al hacer ${method}, Error ${res.status}`)
-                    };
+                    if (res.status >= 400)  throw new Error(`Error al hacer ${method}, Error ${res.status}`);
                     return res.json();
-                    // loaderControler.disable();
-                    // return res;
                 })
-                .then(res => {
-                    debugger;
+                .then(res=>{
                     console.log(res);
                 })
                 .catch(err => {
                     throw err;
                 })
         } catch (error) {
+            console.log(error);
             showAlertBanner('danger', error);
         }
     }
@@ -174,10 +170,25 @@
     });
 
     btnSavePromotion.addEventListener('click', async e => {
-        let dataImages = getDataForRequest();
-        console.log(dataImages);
-        let result = await requestUsingFetch('POST', dataImages);
-        console.log(result);
+
+        let hasImages = promotionsContent.querySelector('.promo-img');
+        if (!hasImages) { 
+            showAlertBanner('warning', 'Debe introducir una imagen') 
+            return;
+        };
+        let wasAccepted = await showAcceptRejectModal('Desea guardar', 'Si guarda, automatimcante se eliminaran las imaneges que no esten seleccionadas');
+        if (wasAccepted) {
+
+            let dataImages = getDataForRequest();
+            await requestUsingFetch('POST', dataImages);
+            window.location.reload()
+            // console.log(result);
+            
+            // if(result.status == 200){
+            //     promotionsContent.querySelectorAll('')
+            //     showAlertBanner('success','Se han guardado las imagenes correctamente')
+            // }
+        }
 
     })
     loaderControler.disable();
