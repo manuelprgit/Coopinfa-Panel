@@ -916,4 +916,13 @@ body {
   overflow: hidden;
 }
 
+.branches-modal .modal.branch-modal {
+  width: 60%;
+}
+.branches-modal .modal.branch-modal .body-modal .table-content .thead .tr,
+.branches-modal .modal.branch-modal .body-modal .table-content .tbody .tr {
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=main.css.map */

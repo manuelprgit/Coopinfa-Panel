@@ -27,7 +27,7 @@ app.get('/productos', (req, res) => {
 });
 
 app.get('/tags', (req, res) => {
-    res.render('tags');
+    res.render('tags'); 
 });
 
 app.get('/consejo', (req, res) => {
@@ -40,6 +40,10 @@ app.get('/integrantes-consejo', (req, res) => {
 
 app.get('/panel-promocion', (req, res) => {
     res.render('panel-promocion');
+});
+
+app.get('/mantenimineto-sucursles', (req, res) => {
+    res.render('sucursales');
 });
 
 app.listen(port, () => {

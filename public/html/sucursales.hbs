@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{> head_links}}
+    <link rel="stylesheet" href="./css/products.css">
+</head>
+
+<body>
+    {{> tools}}
+    <div class="page-content">
+        {{> side_menu}}
+        <main class="main-content">
+            {{> loader}}
+            {{> head_section}}
+            <div class="main-section-content">
+                <div class="head-main-content">
+                    <i class="fa-regular fa-building"></i>
+                    <div class="text-content">
+                        <h2>Mantenimento de sucursales</h2>
+                        <p>Este apartado es para el mantenimiento de las sucursales</p>
+                    </div>
+                </div>
+                <div class="body-main-content" id="inputContent">
+                    <div class="inputs-content">
+
+                        <div class="input-form article-content">
+                            <span>Imagen de la sucursal</span>
+                            <label for="principalImg">
+                                <figure>
+                                    <img src="./src/img/add.png" alt="" id="principalImgContent">
+                                </figure>
+                                <input type="file" accept="image/*" id="principalImg">
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Codigo</span>
+                                <input type="text" value="0" id="branchId" disabled>
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Nombre de sucursal</span>
+                                <input type="text" class="required" id="branchName">
+                            </label>
+                        </div>
+                        <div class="input-form">
+                            <label for="">
+                                <span>Direccion</span>
+                                <textarea type="text" class="required" id="address"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Telefono</span>
+                                <input type="text" class="required" id="phone">
+                            </label>
+                        </div>
+
+                        <div class="input-form">
+                            <label for="">
+                                <span>Locacion en Mapa</span>
+                                <input type="text" class="required" id="mapLocation">
+                            </label>
+                        </div>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+        </main>
+
+        <section class="button-section">
+            <div class="button-container">
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box ">Limpiar</span>
+                    <button id="btnClearAll" title="Nuevo" class="btn-custom-primary">
+                        <i class="fa-solid fa-file fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip ">
+                    <span class="tooltip-box">Buscar articulos creados</span>
+                    <button id="btnSearchSucursal" class="btn-custom-info">
+                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+                    </button>
+                </div>
+                <div class="button-grouper tooltip">
+                    <span class="tooltip-box">Guardar articulo</span>
+                    <button id="btnSaveSucursal" title="Guardar" class="btn-custom-success">
+                        <i class="fa-regular fa-floppy-disk fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-content branches-modal" id="modalSucursales">
+        <div class="modal branch-modal">
+            <div class="head-modal">
+                <h2>Sucursales</h2>
+            </div>
+            <div class="close-modal" id="closeModal">
+                <p>X</p>
+            </div>
+            <div class="body-modal">
+                <div class="table-content">
+                    <div class="table" id="tableSucursal">
+                        <div class="thead">
+                            <div class="tr">
+                                <div class="td text-center">Código</div>
+                                <div class="td">Sucursal</div>
+                                <div class="td">Dirección</div>
+                                <div class="td">Teléfono</div>
+                            </div>
+                        </div>
+                        <div class="tbody" id="tdobySucursal">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> scripts}}
+    <script src="./js/branch-offices.js"></script>
+</body>
+
+</html>

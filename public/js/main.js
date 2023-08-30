@@ -18,10 +18,10 @@ let iconContent = document.getElementById('iconContent');
 
 let loaderControler = {
     enable: () => {
-        loader.classList.add('show')
+        loader.classList.add('show');
     },
     disable: () => {
-        loader.classList.remove('show')
+        loader.classList.remove('show');
     }
 }
 

@@ -1034,4 +1034,22 @@ body{
     }
 }
 
+.branches-modal{
+    .modal.branch-modal{
+        width: 60%;
+        .body-modal{
+            .table-content{
+                .thead,
+                .tbody{
+                    .tr{
+                        grid-template-columns: 1fr 1fr 2fr 1fr;
+                        cursor: pointer;
+                    }
+                }
+                
+            }
+        }
+    }
+
+}
 //#endregion fin del panel de promociones
