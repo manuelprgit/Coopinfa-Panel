@@ -37,6 +37,7 @@ function showAcceptRejectModal(headerText, text) {
             hideRejectModal()
         })
         rejectButton.addEventListener('click', e => {
+            resolve(false);
             hideRejectModal();
         })
 

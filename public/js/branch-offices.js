@@ -17,7 +17,7 @@
     let btnSaveSucursal = document.getElementById('btnSaveSucursal');
 
     let isEditing = false;
-    let branId
+    let branId = 0;
 
     let URL = `${BaseUrl}api/branch`
     let getAllBranches;
@@ -36,6 +36,7 @@
     }
 
     let clearAllInputs = () => {
+
         principalImgContent.setAttribute('src','./src/img/add.png');
         //TODO: Revisar si el valor de la iamgen se resetea
         principalImg.value = '';
@@ -44,6 +45,8 @@
         address.value = "";
         phone.value = "";
         mapLocation.value = "";
+        isEditing = false;
+        branId = 0;
     }
     
     let setImagesOnContent = async (content, image) => {
@@ -69,8 +72,8 @@
     let getDataForRequest = () => {
         
         let formData = new FormData();
-        formData.append("imgBranch", principalImg.files[0]);
-        formData.append("nameBranch", branchName.value);
+        formData.append("image", principalImg.files[0]);
+        formData.append("branchName", branchName.value);
         formData.append("direction", address.value);
         formData.append("phone", phone.value);
         formData.append("mapLocation", mapLocation.value);
@@ -86,7 +89,7 @@
         tr.setAttribute('data-id', dataRow.branchId);
         td = ` 
             <div class="td text-center">${dataRow.branchId}</div>
-            <div class="td">Aqui hiria el nombre de la sucursal</div> 
+            <div class="td">${dataRow.branchName}</div> 
             <div class="td text-center">${dataRow.direction}</div>
             <div class="td text-center">${dataRow.phone}</div>
 
@@ -112,12 +115,12 @@
     let fillAllInputs = async (sucursal) => {
         console.log(sucursal);
         branchId.value = sucursal.branchId;
-        branchName.value = 'nombre'//sucursal.name;
+        branchName.value = sucursal.branchName;
         address.value = sucursal.direction;
         phone.value = sucursal.phone;
         mapLocation.value = sucursal.mapLocation;
 
-        //if (sucursal.image) await setImagesOnContent(principalImgContent, sucursal.image);
+        if (sucursal.image) await setImagesOnContent(principalImgContent, sucursal.image);
 
     }
 
@@ -145,8 +148,16 @@
                     throw new Error(`Error al hacer la petición, Error ${res.status}`);
                 })
         } catch (error) {
+            loaderControler.disable();
             showAlertBanner('danger', error);
         }
+    }
+
+    let updateRow = () => {
+        let row = tdobySucursal.querySelector(`[data-id="${branId}"]`);
+        row.querySelector('.td:nth-child(2)').textContent = branchName.value;
+        row.querySelector('.td:nth-child(3)').textContent = address.value;
+        row.querySelector('.td:nth-child(4)').textContent = phone.value;
     }
 
     principalImg.addEventListener("change", function (e) {
@@ -180,12 +191,13 @@
             updateRow();
             clearAllInputs();
             removeAllDangerAlert(inputContent);
+            isEditing = false;
 
         } else {
 
             let branchCreate = await requestUsingFetch('POST', data);
-            tdobyProduct.append(insertRowOnTable(branchCreate, getAllBranches.length));
-            showAlertBanner('success', 'Se ha creado el producto');
+            tdobySucursal.append(insertRowOnTable(branchCreate, getAllBranches.length));
+            showAlertBanner('success', 'Se ha creado la sucursal');
             clearAllInputs();
             getAllProducts = await fetch(URL)
                 .then(res => {
@@ -200,15 +212,31 @@
 
         }
 
-        //TODO: se cuarda varias veces si le damos a cancelar varias veces
+        try {
+            getAllBranches = await fetch(URL)
+            .then(res=>{
+                if(res.status >= 400) throw new Error(`Error al hacer la petición, Error ${res.status}`);
+                return res.json();
+            }) 
+            .catch(err=>{
+                throw err
+            })
+            
+        } catch (error) {
+            showAlertBanner('danger',error)
+        }
+
     });
 
     tdobySucursal.addEventListener('click',e=>{
 
         if(e.target.closest('.tr')){
+            clearAllInputs()
             let key = e.target.closest('.tr').getAttribute('data-key');
+            branId = getAllBranches[key].branchId;
             fillAllInputs(getAllBranches[key]);
             hideModal(modalSucursales)
+            isEditing = true;
         }
 
     });
